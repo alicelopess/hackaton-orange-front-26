@@ -156,6 +156,10 @@ input {
     color: var(--cor-5);
 }
 
+#submit:hover{
+    cursor: pointer;
+}
+
 form a {
     text-decoration: none;
     color: var(--cor-3);
