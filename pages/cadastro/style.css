@@ -43,24 +43,6 @@
     line-height: 2.5rem;
 }
 
-.login button {
-    display: flex;
-    padding: 0.6875rem var(--1, 0.5rem);
-    align-items: center;
-    gap: var(--3, 1.5rem);
-
-    color: rgba(0, 0, 0, 0.54);
-    font-size: 0.875rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-
-    border: none;
-    border-radius: 0.125rem;
-    background: #FFF;
-    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.17), 0px 0px 1px 0px rgba(0, 0, 0, 0.08);
-}
-
 .img-2 {
     width: 1.3rem;
     height: 1.3rem;
@@ -70,7 +52,7 @@ form {
     position: relative;
     display: flex;
     width: 32.3125rem;
-    height: 16.9375rem;
+    height: 20.9375rem;
     padding-bottom: 0.1875rem;
     flex-direction: column;
     justify-content: center;
@@ -79,14 +61,6 @@ form {
     flex-shrink: 0;
     margin-top: 0.7rem;
 
-}
-
-.form-title {
-    color: var(--cor-2);
-    font-size: 1.5rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1.5rem;
 }
 
 label {
@@ -101,13 +75,38 @@ label {
     letter-spacing: 0.025rem;
 }
 
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.row input {
+    width: 15.5rem;
+    
+}
+
+.row div {
+    margin-right: 4.5%;
+}
+
 #lb-1 {
-    top: 32px;
+    top: 23px;
     left: 13px;
 }
 
 #lb-2 {
-    top: 108px;
+    top: 23px;
+    left: 280px;
+}
+
+#lb-3 {
+    top: 99px;
+    left: 13px;
+}
+
+#lb-4 {
+    top: 176px;
     left: 13px;
 }
 

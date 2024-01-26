@@ -7,29 +7,37 @@
     <title>Cadastro</title>
     <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/components/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
     <div class="container-login">
-        <img class="img-1" src="../../assets/ilustration-login.png"
-            alt="Animação de pessoas mexendo no seu projeto pelo computador">
+        <img class="img-1" src="../../assets/img_cadastro.png"
+            alt="Mulher sentada à mesa trabalhando em seu computador">
 
         <div class="login">
-            <h1>Entre no Orange Portfólio</h1>
-            <button> <img class="img-2" src="../../assets/icon-google.svg" alt="icone do google"> Entrar com Google
-            </button>
+            <h1>Cadastre-se</h1>
 
             <form method="post" action="">
-                <p class="form-title">Faça login com email</p>
+                <div class="row">
+                    <div>
+                        <label id="lb-1">Nome </label>
+                        <input type="text">
+                    </div>
 
-                <label id="lb-1">Email address </label>
+                    <div>
+                        <label id="lb-2">Sobrenome </label>
+                        <input type="text">
+                    </div>
+                </div>
+
+                <label id="lb-3">Email address </label>
                 <input type="email">
 
-                <label id="lb-2">Password </label>
+                <label id="lb-4">Password </label>
                 <input type="password" name="password">
 
-                <input id="submit" type="submit" value="Entrar">
-                <a id="btnPass" href="">Cadastre-se</a>
+                <input id="submit" type="submit" value="Cadastrar">
             </form>
         </div>
     </div>
