@@ -7,6 +7,7 @@
     --cor-6: #303133;
     --cor-7: #113;
     --cor-8: #E6E9F2;
+    --cor-9: #FEFEFE;
 }
 
 * {
@@ -155,12 +156,12 @@ header {
 .container-projetos {
     display: flex;
     justify-content: space-between;
-    margin: 2.5rem 2rem 4.94rem 2rem;
+    padding: 2.5rem 2rem 4.94rem 2rem;
     width: 100%;
     height: 16.125rem;
     flex-shrink: 0;
+    width: 100%;
 }
-
 
 .enviar-projeto {
     display: flex;
@@ -210,4 +211,152 @@ header {
 
     border-radius: var(--borderRadius, 0.25rem);
     background: rgba(230, 233, 242, 0.20);
+}
+
+
+
+/* Primeiro Modal (Adicionar projeto) */
+
+.container-modal {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100vw;
+    background: var(--components-backdrop-fill, rgba(0, 0, 0, 0.50));
+
+    display: flex;
+    justify-content: center;
+    padding-top: 8.94rem;
+}
+
+.modal-1 {
+    position: absolute;
+    width: 55.625rem;
+    height: 32.625rem;
+    padding: 1.5rem 2rem;
+    flex-shrink: 0;
+    background: var(--cor-9);
+    border-radius: var(--none, 0rem);
+}
+
+.modal-1 h4 {
+    width: 51.625rem;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5rem;
+    color: var(--cor-2);
+}
+
+.modal-1 p {
+    margin: 1.5rem 0 1rem 0;
+    color: var(--cor-2);
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1rem;
+    letter-spacing: 0.00938rem;
+}
+
+.enviar-projeto-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 24.3125rem;
+    height: 19rem;
+    padding: 5.69rem 3.69rem;
+    border-radius: var(--borderRadius, 0.25rem);
+    background: var(--Neutral-Colors-Neutral-70, #E6E9F2);
+    border: none;
+}
+
+.enviar-projeto-2 p {
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 0.875rem;
+    letter-spacing: 0.01563rem;
+}
+
+#Form-modal-1 {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 4.5rem;
+    right: 2rem;
+
+    width: 25.8125rem;
+    height: 21rem;
+    gap: 1rem;
+}
+
+#Form-modal-1 input {
+    width: 26.5rem;
+    flex-shrink: 0;
+    color: var(--Neutral-Colors-Neutral-100, --cor-3);
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Roboto;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5rem;
+    letter-spacing: 0.00938rem;
+
+    border-radius: var(--borderRadius, 0.25rem);
+    border: var(--none, 1px) solid var(--components-input-outlined-enabledBorder, rgba(0, 0, 0, 0.23));
+}
+
+#i1 {
+    padding: 1rem 0.75rem;
+}
+
+#i2 {
+    height: 7.1rem;
+    padding: 1rem 0.75rem 4.5rem 0.75rem;
+
+}
+
+.modal-bts p {
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1rem;
+    letter-spacing: 0.00938rem;
+    color: var(--cor-2);
+}
+
+.modal-bts input {
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.625rem;
+    letter-spacing: 0.02875rem;
+    text-transform: uppercase;
+    color: var(--cor-5);
+    background: var(--cor-4);
+    padding: 0.5rem 1.375rem;
+    margin-right:1rem;
+
+    border: none;
+    border-radius: var(--borderRadius, 0.25rem);
+    background: var(--Color-Brand-Secundria-Secondary-100, #F52);
+
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.20), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
+
+.modal-bts button {
+    padding: 0.5rem 1.375rem;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.625rem;
+    letter-spacing: 0.02875rem;
+    text-transform: uppercase;
+    color: var(--cor-3);
+
+    border-radius: var(--borderRadius, 0.25rem);
+    background: var(--action-disabledBackground, rgba(0, 0, 0, 0.12));
+    border: none;
 }

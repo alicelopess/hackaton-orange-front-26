@@ -33,7 +33,7 @@
         <div class="infos">
             <h3>Camila Soares</h3>
             <p>Brasil</p>
-            <button>ADICIONAR PROJETO</button>
+            <button >ADICIONAR PROJETO</button>
         </div>
     </div>
 
@@ -47,12 +47,40 @@
     <div class="container-projetos">
         <button class="enviar-projeto">
             <img src="../../assets/collections.svg" alt="icone do input para enviar imagens">
-            <p class="p-1" >Adicione seu primeiro projeto</p>
-            <p class="p-2" >Compartilhe seu talento com milhares de pessoas</p>
+            <p class="p-1">Adicione seu primeiro projeto</p>
+            <p class="p-2">Compartilhe seu talento com milhares de pessoas</p>
         </button>
 
         <div class="bloco"></div>
         <div class="bloco"></div>
     </div>
+
+    <!-- Primeiro Modal (Adicionar projeto)-->
+    <div class="container-modal">
+        <div class="modal-1">
+            <h4>Adiconar projeto</h4>
+            <p>Selecione o conteúdo que você deseja fazer upload</p>
+
+            <button class="enviar-projeto-2">
+                <img src="../../assets/collections.svg" alt="icone do input para enviar imagens">
+                <p class="p-2">Compartilhe seu talento com milhares de pessoas</p>
+            </button>
+
+            <form action="" id="Form-modal-1">
+                <input id="i1" type="text" name="titulo" placeholder="Título">
+                <input id="i1" type="text" name="tags" placeholder="Tags">
+                <input id="i1" type="text" name="link" placeholder="Link">
+                <input id="i2" type="text" name="descricao" placeholder="Descrição ">
+            </form>
+
+            <div class="modal-bts">
+                <p>Visualizar publicação</p>
+                <input type="submit" value="SALVAR" form="Form-modal-1">
+                <button type="reset" form="Forme-modal-1">CANCELAR</button>
+            </div>
+        </div>
+    </div>
+
 </body>
+
 </html>

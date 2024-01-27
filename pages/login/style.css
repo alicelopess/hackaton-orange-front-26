@@ -78,7 +78,6 @@ form {
     gap: 1.125rem;
     flex-shrink: 0;
     margin-top: 0.7rem;
-
 }
 
 .form-title {
@@ -102,12 +101,12 @@ label {
 }
 
 #lb-1 {
-    top: 14px;
+    top: 31px;
     left: 13px;
 }
 
 #lb-2 {
-    top: 90px;
+    top: 107px;
     left: 13px;
 }
 
@@ -228,5 +227,4 @@ form a {
     #submit {
         width: 19.5rem;
     }
-
 }
