@@ -215,6 +215,14 @@ header {
 
 
 
+/* Animação do cursor */
+
+.h {
+    cursor: pointer;
+}
+
+
+
 /* Primeiro Modal (Adicionar projeto) */
 
 .container-modal {
@@ -224,7 +232,7 @@ header {
     width: 100vw;
     background: var(--components-backdrop-fill, rgba(0, 0, 0, 0.50));
 
-    display: flex;
+    display: none;
     justify-content: center;
     padding-top: 8.94rem;
 }

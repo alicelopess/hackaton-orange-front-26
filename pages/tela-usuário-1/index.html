@@ -33,7 +33,7 @@
         <div class="infos">
             <h3>Camila Soares</h3>
             <p>Brasil</p>
-            <button >ADICIONAR PROJETO</button>
+            <button class="h" onclick="openModal()" >ADICIONAR PROJETO</button>
         </div>
     </div>
 
@@ -45,7 +45,7 @@
 
     <!-- Ficheiro de projetos -->
     <div class="container-projetos">
-        <button class="enviar-projeto">
+        <button class="enviar-projeto h">
             <img src="../../assets/collections.svg" alt="icone do input para enviar imagens">
             <p class="p-1">Adicione seu primeiro projeto</p>
             <p class="p-2">Compartilhe seu talento com milhares de pessoas</p>
@@ -61,7 +61,7 @@
             <h4>Adiconar projeto</h4>
             <p>Selecione o conteúdo que você deseja fazer upload</p>
 
-            <button class="enviar-projeto-2">
+            <button class="enviar-projeto-2 h">
                 <img src="../../assets/collections.svg" alt="icone do input para enviar imagens">
                 <p class="p-2">Compartilhe seu talento com milhares de pessoas</p>
             </button>
@@ -76,11 +76,11 @@
             <div class="modal-bts">
                 <p>Visualizar publicação</p>
                 <input type="submit" value="SALVAR" form="Form-modal-1">
-                <button type="reset" form="Forme-modal-1">CANCELAR</button>
+                <button type="reset" form="Forme-modal-1" onclick="closeModal()" class="h">CANCELAR</button>
             </div>
         </div>
     </div>
-
+<script src="./script.js"></script>
 </body>
 
 </html>
