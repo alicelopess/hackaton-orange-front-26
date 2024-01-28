@@ -34,6 +34,31 @@
     height: 100vh;
 }
 
+
+.sucesso {
+    display: flex;
+    width: 320px;
+    padding: 10px 16px;
+    gap: 1rem;
+    border-radius: 4px;
+    align-items:center;
+    background-color: var(--cor-7);
+}
+
+.sucesso img {
+    width: 22px;
+    height: 22px;
+}
+
+.sucesso h2 {
+    align-self: stretch;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5rem;
+    color: var(--cor-5);
+}
+
 .login h1 {
     color: var(--cor-1);
     font-family: Roboto;
