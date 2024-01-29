@@ -1,0 +1,133 @@
+:root {
+    --cor-1: #224;
+    --cor-2: #515255;
+    --cor-3: #818388;
+    --cor-4: #F52;
+    --cor-5: #FCFDFF;
+    --cor-6: #303133;
+    --cor-7: #113;
+    --cor-8: #E6E9F2;
+    --cor-9: #FEFEFE;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 4.5625rem;
+    padding: 1rem 1.875rem;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    border-bottom: 1px solid #113;
+    background: var(--cor-7);
+}
+
+.h-1 {
+    display: flex;
+    align-items: center;
+    gap: 5.25rem;
+}
+
+.link {
+    text-decoration: none;
+    font: 1em sans-serif;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.25rem;
+    letter-spacing: 0.00938rem;
+    color: var(--cor-5);
+
+    margin-left: 2.5rem;
+}
+
+.h-2 {
+    display: flex;
+    gap: 1rem;
+}
+
+.icon-user {
+    width: var(--5, 2.5rem);
+    height: var(--5, 2.5rem);
+    flex-shrink: 0;
+    border-radius: 50%;
+}
+
+.section-1 {
+    display: flex;
+    justify-content: center;
+    padding-top: 7rem;
+}
+
+.section-1 p {
+    width: 46.5rem;
+    color: var(--cor-1);
+    text-align: center;
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 34px;
+    letter-spacing: 0.25px;
+}
+
+.pesquisa {
+    margin-top: 7.5rem;
+    height: auto;
+    width: 100vw;
+
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    padding-left: 2rem;
+}
+
+.pesquisa input {
+    width: 32.0625rem;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5rem;
+    letter-spacing: 0.00938rem;
+
+    padding: var(--none, 1rem) 0.75rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--none, 0rem);
+    border-radius: var(--borderRadius, 0.25rem);
+    border: var(--none, 1px) solid var(--components-input-outlined-enabledBorder, rgba(0, 0, 0, 0.23));
+}
+
+.container-projetos {
+    display: flex;
+    gap: 1.5rem;
+    padding: 2.5rem 2rem 4.94rem 2rem;
+    width: 100%;
+    height: 16.125rem;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    align-content: space-between;
+}
+
+.bloco {
+    display: inline-flex;
+    padding: var(--none, 0rem);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--1, 0.5rem);
+    border-radius: var(--none, 0rem);
+}
+
+
+.projeto {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
