@@ -155,12 +155,11 @@ header {
 
 .container-projetos {
     display: flex;
-    justify-content: space-between;
-    padding: 2.5rem 2rem 4.94rem 2rem;
-    width: 100%;
-    height: 16.125rem;
+    padding: 2.5rem 2rem;
+    gap: 1.5rem;
+    width: auto;
+    height: auto;
     flex-shrink: 0;
-    width: 100%;
 }
 
 .enviar-projeto {
@@ -228,13 +227,20 @@ header {
 .container-modal {
     position: absolute;
     top: 0;
-    height: 100%;
-    width: 100vw;
+    height: 52rem;
+    width: 100%;
     background: var(--components-backdrop-fill, rgba(0, 0, 0, 0.50));
 
     display: none;
     justify-content: center;
     padding-top: 8.94rem;
+}
+
+/* Correção background para tela do notebook */
+@media screen and (min-height:900px ){
+    .container-modal {
+        height: 100%;
+    }
 }
 
 .modal-1 {
@@ -245,6 +251,7 @@ header {
     flex-shrink: 0;
     background: var(--cor-9);
     border-radius: var(--none, 0rem);
+
 }
 
 .modal-1 h4 {
@@ -264,6 +271,14 @@ header {
     font-weight: 400;
     line-height: 1rem;
     letter-spacing: 0.00938rem;
+}
+
+
+/* Imagem exibida pelo usuárop*/
+#exibir-projeto{
+    width: 24.3125rem;
+    height: 19rem;
+    display: none;
 }
 
 .enviar-projeto-2 {
@@ -300,7 +315,7 @@ header {
 }
 
 #Form-modal-1 input {
-    width: 26.5rem;
+    width: 25.6rem;
     flex-shrink: 0;
     color: var(--Neutral-Colors-Neutral-100, --cor-3);
     font-feature-settings: 'clig' off, 'liga' off;
@@ -322,7 +337,6 @@ header {
 #i2 {
     height: 7.1rem;
     padding: 1rem 0.75rem 4.5rem 0.75rem;
-
 }
 
 .modal-bts p {

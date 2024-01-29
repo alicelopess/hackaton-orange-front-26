@@ -45,7 +45,7 @@
 
     <!-- Ficheiro de projetos -->
     <div class="container-projetos">
-        <button class="enviar-projeto h">
+        <button class="enviar-projeto h" onclick="openModal()">
             <img src="../../assets/collections.svg" alt="icone do input para enviar imagens">
             <p class="p-1">Adicione seu primeiro projeto</p>
             <p class="p-2">Compartilhe seu talento com milhares de pessoas</p>
@@ -61,7 +61,8 @@
             <h4>Adiconar projeto</h4>
             <p>Selecione o conteúdo que você deseja fazer upload</p>
 
-            <button class="enviar-projeto-2 h">
+            <img id="exibir-projeto" src="" alt="">
+            <button type="file" class="enviar-projeto-2 h">
                 <img src="../../assets/collections.svg" alt="icone do input para enviar imagens">
                 <p class="p-2">Compartilhe seu talento com milhares de pessoas</p>
             </button>
@@ -71,6 +72,7 @@
                 <input id="i1" type="text" name="tags" placeholder="Tags">
                 <input id="i1" type="text" name="link" placeholder="Link">
                 <input id="i2" type="text" name="descricao" placeholder="Descrição ">
+                <input type="file" id="input-file" style="display: none;" accept="image/*">
             </form>
 
             <div class="modal-bts">
@@ -82,5 +84,4 @@
     </div>
 <script src="./script.js"></script>
 </body>
-
 </html>
