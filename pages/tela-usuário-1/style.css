@@ -1,3 +1,4 @@
+/*Abaixo deixei as cores utilizadas no projeto */
 :root {
     --cor-1: #224;
     --cor-2: #515255;
@@ -10,12 +11,25 @@
     --cor-9: #FEFEFE;
 }
 
+
+/* Classe com animação do ponteiro para ser adiciona nos elementos de interação */
+.h {
+    cursor: pointer;
+}
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
+
+html,
+body {
+    height: 100%;
+}
+
 
 header {
     position: relative;
@@ -26,7 +40,8 @@ header {
     justify-content: space-between;
     align-items: center;
     flex-shrink: 0;
-    border-bottom: 1px solid #113;
+    border-bottom: 1px solid var(--cor-7);
+    ;
     background: var(--cor-7);
 }
 
@@ -120,7 +135,7 @@ header {
 .pesquisa {
     margin-top: 3.5rem;
     height: auto;
-    width: 100vw;
+    width: 100%;
 
     gap: 1rem;
     display: flex;
@@ -155,11 +170,12 @@ header {
 
 .container-projetos {
     display: flex;
+    flex-wrap: wrap;
     padding: 2.5rem 2rem;
     gap: 1.5rem;
-    width: auto;
+    width: 100%;
     height: auto;
-    flex-shrink: 0;
+    margin-bottom: 4.94rem;
 }
 
 .enviar-projeto {
@@ -206,6 +222,7 @@ header {
 .bloco {
     width: 24.3125rem;
     height: 16.125rem;
+    display: flex;
     flex-shrink: 0;
 
     border-radius: var(--borderRadius, 0.25rem);
@@ -214,20 +231,13 @@ header {
 
 
 
-/* Animação do cursor */
-
-.h {
-    cursor: pointer;
-}
-
-
 
 /* Primeiro Modal (Adicionar projeto) */
 
 .container-modal {
     position: absolute;
     top: 0;
-    height: 52rem;
+    height: 50rem;
     width: 100%;
     background: var(--components-backdrop-fill, rgba(0, 0, 0, 0.50));
 
@@ -236,8 +246,13 @@ header {
     padding-top: 8.94rem;
 }
 
-/* Correção background para tela do notebook */
-@media screen and (min-height:900px ){
+
+/* O media abaixo foi utilizado para corrigir umn bug no container que envolvolve o modal (sombra), pois
+quando mudamos para uma resolução menor (notebook) ele não acompanha até o fim da tela. 
+
+Detalhe: Eu utilizei de forma contrária, ou seja ele apenas á válido para resoluções acima de 900px*/
+
+@media screen and (min-height:900px) {
     .container-modal {
         height: 100%;
     }
@@ -251,7 +266,7 @@ header {
     flex-shrink: 0;
     background: var(--cor-9);
     border-radius: var(--none, 0rem);
-
+    display: inline;
 }
 
 .modal-1 h4 {
@@ -274,11 +289,13 @@ header {
 }
 
 
+
 /* Imagem exibida pelo usuárop*/
-#exibir-projeto{
+#exibir-projeto {
     width: 24.3125rem;
     height: 19rem;
     display: none;
+    object-fit: cover;
 }
 
 .enviar-projeto-2 {
@@ -317,7 +334,7 @@ header {
 #Form-modal-1 input {
     width: 25.6rem;
     flex-shrink: 0;
-    color: var(--Neutral-Colors-Neutral-100, --cor-3);
+    color: var(--Neutral-Colors-Neutral-100, var(--cor-3));
     font-feature-settings: 'clig' off, 'liga' off;
     font-family: Roboto;
     font-size: 1rem;
@@ -330,11 +347,13 @@ header {
     border: var(--none, 1px) solid var(--components-input-outlined-enabledBorder, rgba(0, 0, 0, 0.23));
 }
 
-#i1 {
+#titulo,
+#tags,
+#link {
     padding: 1rem 0.75rem;
 }
 
-#i2 {
+#descricao {
     height: 7.1rem;
     padding: 1rem 0.75rem 4.5rem 0.75rem;
 }
@@ -358,15 +377,14 @@ header {
     color: var(--cor-5);
     background: var(--cor-4);
     padding: 0.5rem 1.375rem;
-    margin-right:1rem;
+    margin-right: 1rem;
 
     border: none;
     border-radius: var(--borderRadius, 0.25rem);
-    background: var(--Color-Brand-Secundria-Secondary-100, #F52);
+    background: var(--Color-Brand-Secundria-Secondary-100, var(--cor-4));
 
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.20), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 }
-
 
 .modal-bts button {
     padding: 0.5rem 1.375rem;
@@ -381,4 +399,137 @@ header {
     border-radius: var(--borderRadius, 0.25rem);
     background: var(--action-disabledBackground, rgba(0, 0, 0, 0.12));
     border: none;
+}
+
+
+
+/* Segundo modal (Demonstração do projeto) */
+
+.modal-2 {
+    display: none;
+    flex-direction: column;
+    position: relative;
+    width: 65.125rem;
+    height: 61.30094rem;
+    flex-shrink: 0;
+    margin-top: 8.38;
+    border-radius: var(--none, 0rem);
+    background: #FFF;
+    padding: 3.5rem 6.38rem 5.18rem 6.38rem;
+    z-index: 2;
+}
+
+.close {
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+}
+
+.title {
+    display: flex;
+    width: 52.375rem;
+    padding: var(--none, 0rem);
+    justify-content: center;
+    align-items: center;
+    height: 3.125rem;
+    gap: 10.9375rem;
+}
+
+.title-1 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 3.125rem;
+}
+
+.title-infos {
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+
+}
+
+.tags {
+    display: flex;
+    gap: 1rem;
+}
+
+.tags p {
+    font-size: 0.8125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.125rem;
+    letter-spacing: 0.01rem;
+    padding: 0.5rem;
+    border-radius: 6.25rem;
+    background: var(--action-selected, rgba(0, 0, 0, 0.08));
+}
+
+h5 {
+    color: var(--cor-2);
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5rem;
+}
+
+#exibir-projeto-2 {
+    display: flex;
+    object-fit: cover;
+    margin-top: 2.05rem;
+    width: 52.375rem;
+    height: 36.5625rem;
+    border-radius: var(--none, 0rem);
+    background: url(<path-to-image>), lightgray 50% / cover no-repeat;
+}
+
+.descricao {
+    margin-top: 4.01rem;
+    width: 52.375rem;
+
+    display: flex;
+    flex-direction: column;
+
+    color: var(--Neutral-Colors-Neutral-120, var(--cor-6));
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1rem;
+    letter-spacing: 0.03125rem;
+}
+
+span {
+    margin-top: 4rem;
+    color: var(--Neutral-Colors-Neutral-130, #0B0C0D);
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1rem;
+    letter-spacing: 0.00938rem;
+}
+
+
+
+/* último modal (Confirmação do envio) */
+.modal-3 {
+    display: none;
+    top: 0;
+    height: 0;
+}
+
+.modal-3 p {
+    color: var(--Neutral-Colors-Neutral-110, var(--cor-3));
+    text-align: center;
+
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5rem;
+}
+
+.modal-3 img {
+    background: green;
+    padding: 0.1rem;
+    border-radius: 50%;
 }
