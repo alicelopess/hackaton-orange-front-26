@@ -41,7 +41,6 @@ header {
     align-items: center;
     flex-shrink: 0;
     border-bottom: 1px solid var(--cor-7);
-    ;
     background: var(--cor-7);
 }
 
@@ -237,7 +236,7 @@ header {
 .container-modal {
     position: absolute;
     top: 0;
-    height: 50rem;
+    height: 52rem;
     width: 100%;
     background: var(--components-backdrop-fill, rgba(0, 0, 0, 0.50));
 
@@ -367,7 +366,7 @@ Detalhe: Eu utilizei de forma contrária, ou seja ele apenas á válido para res
     color: var(--cor-2);
 }
 
-.modal-bts input {
+#btnSalvar {
     font-size: 0.9375rem;
     font-style: normal;
     font-weight: 500;
@@ -386,7 +385,7 @@ Detalhe: Eu utilizei de forma contrária, ou seja ele apenas á válido para res
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.20), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 }
 
-.modal-bts button {
+#btnClose {
     padding: 0.5rem 1.375rem;
     font-size: 0.9375rem;
     font-style: normal;
@@ -440,7 +439,7 @@ Detalhe: Eu utilizei de forma contrária, ou seja ele apenas á válido para res
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    height: 3.125rem;
+    min-height: 3.125rem;
 }
 
 .title-infos {
@@ -514,14 +513,23 @@ span {
 /* último modal (Confirmação do envio) */
 .modal-3 {
     display: none;
+    position: absolute;
     top: 0;
     height: 0;
+    padding: 2rem 3rem;
+    margin-top: 20.44rem;
+    width: 21.9375rem;
+    height: 15.125rem;
+    background: var(--cor-5);
+    gap: 1.5rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal-3 p {
-    color: var(--Neutral-Colors-Neutral-110, var(--cor-3));
+    color: var(--Neutral-Colors-Neutral-110, var(--cor-2));
     text-align: center;
-
     font-size: 1.5rem;
     font-style: normal;
     font-weight: 400;
@@ -532,4 +540,32 @@ span {
     background: green;
     padding: 0.1rem;
     border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+}
+
+.voltar-proj {
+    display: flex;
+    width: 15.875rem;
+    padding: 0.5rem 1.375rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+    color: var(--Neutral-Colors-Neutral-60, var(--cor-5));
+    font-feature-settings: 'clig' off, 'liga' off;
+
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.625rem;
+    letter-spacing: 0.02875rem;
+    text-transform: uppercase;
+
+    border: none;
+    border-radius: var(--borderRadius, 0.25rem);
+    background: var(--Color-Brand-Secundria-Secondary-100, var(--cor-4));
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.20), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 }

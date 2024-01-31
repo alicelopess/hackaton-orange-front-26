@@ -67,18 +67,21 @@
                 <p class="p-2">Compartilhe seu talento com milhares de pessoas</p>
             </button>
 
-            <form action="" id="Form-modal-1">
+            <form action="https://hackaton-orange-back-26.onrender.com/projects" method="POST" id="Form-modal-1">
                 <input id="titulo" type="text" name="titulo" placeholder="Título">
                 <input id="tags" type="text" name="tags" placeholder="Tags">
                 <input id="link" type="text" name="link" placeholder="Link">
                 <input id="descricao" type="text" name="descricao" placeholder="Descrição ">
-                <input type="file" id="input-file" style="display: none;" accept="image/*">
+                <input type="file" id="input-file" style="display: none ;" accept="image/*">
+
+                <input id="Enviar" onclick="openModal3()" type="submit" style="display: none;">
             </form>
 
             <div class="modal-bts">
                 <p onclick="openModal2()" class="h">Visualizar publicação</p>
-                <input type="submit" value="SALVAR" form="Form-modal-1">
-                <button type="reset" form="Forme-modal-1" onclick="closeModal()" class="h">CANCELAR</button>
+                <button id="btnSalvar" onclick="openModal3()" class="h"> SALVAR</button>
+                <button id="btnClose" type="reset" form="Forme-modal-1" onclick="closeModal()"
+                    class="h">CANCELAR</button>
             </div>
         </div>
 
@@ -94,7 +97,7 @@
                     </div>
                 </div>
 
-                <h5>Título</h5>
+                <h5></h5>
 
                 <div class="tags">
                     <p>UX</p>
@@ -105,24 +108,23 @@
             <img id="exibir-projeto-2" src="" alt="">
 
             <div class="descricao">
-                <p id="#des-1">Descrição do projeto</p>
+                <p id="#des-1">(Descrição do projeto)</p>
 
                 <span>Download</span>
-                <a href="">https://gumroad.com/products/wxCSL</a>
+                <a href="">(Link do projeto)</a>
             </div>
         </div>
 
 
         <!-- Terceiro Modal (Confirmação do envio)-->
+        <div class="modal-3">
+            <p>Projeto adicionado com sucesso!</p>
+            <img class="modal-3-img" src="../../assets/confirmacao.svg" alt="imagem de confirmação do envio">
+            <button class="voltar-proj h" onclick="closeModal3()">VOLTAR PARA PROJETOS</button>
+        </div>
     </div>
-
-    <div class="modal-3">
-        <p>Projeto adicionado com sucesso!</p>
-        <img class="modal-3-img" src="../../assets/confirmacao.svg" alt="imagem de confirmação do envio">
-        <button>VOLTAR PARA PROJETOS</button>
-    </div>
-
-
+<!-- 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
     <script src="./script.js"></script>
 </body>
 

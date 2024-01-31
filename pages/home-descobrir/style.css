@@ -133,16 +133,27 @@ header {
 }
 
 /* Modal Visualizar projeto */
+
+.container-modal{
+    position: absolute;
+    background: green;
+    top: 0px;
+    height: 100%;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+
 .modal-projeto {
-    display: none;
     flex-direction: column;
-    position: relative;
+    position: absolute;
     width: 65.125rem;
     height: 61.30094rem;
     flex-shrink: 0;
     margin-top: 8.38;
     border-radius: var(--none, 0rem);
-    background: #FFF;
+    background: red;
     padding: 3.5rem 6.38rem 5.18rem 6.38rem;
     z-index: 2;
 }
