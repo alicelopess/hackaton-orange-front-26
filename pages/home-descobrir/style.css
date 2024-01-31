@@ -17,6 +17,11 @@
     font-family: 'Roboto', sans-serif;
 }
 
+html,
+body {
+    height: 100%;
+}
+
 header {
     position: relative;
     display: flex;
@@ -81,7 +86,7 @@ header {
 .pesquisa {
     margin-top: 7.5rem;
     height: auto;
-    width: 100vw;
+    width: 100%;
 
     gap: 1rem;
     display: flex;
@@ -136,14 +141,14 @@ header {
 
 .container-modal{
     position: absolute;
-    background: green;
     top: 0px;
-    height: 100%;
-    width: 100vw;
-    display: flex;
+    height: 52rem;
+    width: 100%;
+    background: var(--components-backdrop-fill, rgba(0, 0, 0, 0.50));
+    display: none;
     justify-content: center;
+    padding-top: 8.94rem;
 }
-
 
 .modal-projeto {
     flex-direction: column;
@@ -151,9 +156,8 @@ header {
     width: 65.125rem;
     height: 61.30094rem;
     flex-shrink: 0;
-    margin-top: 8.38;
     border-radius: var(--none, 0rem);
-    background: red;
+    background: var(--cor-5);
     padding: 3.5rem 6.38rem 5.18rem 6.38rem;
     z-index: 2;
 }
@@ -168,7 +172,7 @@ header {
     display: flex;
     width: 52.375rem;
     padding: var(--none, 0rem);
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: 3.125rem;
     gap: 10.9375rem;
