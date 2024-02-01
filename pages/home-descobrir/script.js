@@ -1,7 +1,4 @@
-const modal = document.getElementsByClassName("modal-projeto")[0]
-
-
-let preview = document.getElementById("exibir-projeto")
+const modal = document.getElementsByClassName("container-modal")[0]
 
 function openModal(){
     modal.style.display = "flex";
