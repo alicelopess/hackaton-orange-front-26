@@ -25,12 +25,6 @@
     font-family: 'Roboto', sans-serif;
 }
 
-html,
-body {
-    height: 100%;
-}
-
-
 header {
     position: relative;
     display: flex;
@@ -42,6 +36,10 @@ header {
     flex-shrink: 0;
     border-bottom: 1px solid var(--cor-7);
     background: var(--cor-7);
+}
+
+.menu {
+    display: none;
 }
 
 .h-1 {
@@ -73,6 +71,50 @@ header {
     height: var(--5, 2.5rem);
     flex-shrink: 0;
     border-radius: 50%;
+}
+
+.drop {
+    width: 220px;
+    height: 226px;
+    background: white;
+    box-shadow: 0px 6px 6px -3px rgba(0, 0, 0, 0.20);
+    border-radius: 4px;
+    overflow: hidden;
+    flex-direction: column;
+   
+    align-items: flex-start;
+    display:none;
+    position: absolute;
+}
+
+.drop div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    padding: 1.2rem 0 1.2rem  1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.10);
+}
+
+.drop-2 a{
+    text-decoration: none;
+    color: #0B0C0D;
+}
+
+.drop-3{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 10rem;
+    height: 3rem;
+    margin-left: 1rem;
+    background: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.drop-3 img{
+    width: 2.5rem;
 }
 
 .section-1 {
@@ -236,7 +278,8 @@ header {
 .container-modal {
     position: absolute;
     top: 0;
-    height: 52rem;
+    left: 0;
+    height: 140%;
     width: 100%;
     background: var(--components-backdrop-fill, rgba(0, 0, 0, 0.50));
 
@@ -245,17 +288,20 @@ header {
     padding-top: 8.94rem;
 }
 
+@media screen and (max-width:1500px) {
+    .container-modal {
+        height: 210%;
+    }
+
+}
 
 /* O media abaixo foi utilizado para corrigir umn bug no container que envolvolve o modal (sombra), pois
 quando mudamos para uma resolução menor (notebook) ele não acompanha até o fim da tela. 
 
 Detalhe: Eu utilizei de forma contrária, ou seja ele apenas á válido para resoluções acima de 900px*/
 
-@media screen and (min-height:900px) {
-    .container-modal {
-        height: 100%;
-    }
-}
+
+
 
 .modal-1 {
     position: absolute;
@@ -568,4 +614,94 @@ span {
     border-radius: var(--borderRadius, 0.25rem);
     background: var(--Color-Brand-Secundria-Secondary-100, var(--cor-4));
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.20), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
+
+
+@media screen and (max-width:900px) {
+    .menu {
+        display: inline;
+        width: 3.5rem;
+        position: absolute;
+        left: 0;
+    }
+
+    .h-1 {
+        display: flex;
+        align-items: center;
+        gap: 4.25rem;
+        padding-left: 2rem;
+    }
+
+    .h-1 a {
+        display: none;
+    }
+
+    .section-1 {
+        flex-direction: column;
+        align-items: center;
+        padding-top: 5rem;
+    }
+
+    .section-1 img {
+        width: 7.625rem;
+        height: 7.625rem;
+        flex-shrink: 0;
+        border-radius: 50%;
+        margin-right: 0rem;
+        margin-bottom: 1rem;
+    }
+
+
+    .infos p {
+        margin: 0.5rem 0 0.5rem 0;
+        color: var(--cor-3)
+    }
+
+    .pesquisa {
+        font-display: flex;
+        justify-content: center;
+        padding-left: 0;
+        align-items: center;
+    }
+
+    .pesquisa input {
+        width: 19.5rem;
+    }
+
+    .pesquisa label {
+        width: 19.5rem;
+    }
+
+    .container-projetos {
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        gap: 1.5rem;
+        margin: 1.6rem 0 4.94rem 0;
+    }
+
+    .enviar-projeto {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 19.5rem;
+        height: 16.125rem;
+    }
+
+    .enviar-projeto img {
+        margin-left: 0rem;
+    }
+
+    .bloco {
+        width: 19.5rem;
+        height: 16.125rem;
+    }
+
+    .enviar-projeto p {
+        width: 16.875rem;
+        text-align: start;
+    }
+
 }

@@ -17,12 +17,13 @@ let inptTag = document.getElementById("tags");
 let previewTitle = document.querySelector(".title h5");
 let previewDescri = document.querySelector("#des-1");
 let previewLink = document.querySelector(".descricao a");
+let previewTag = document.querySelector(".tags");
 
-console.log(previewDescri)
-console.log(previewLink)
+//container dos projetos (precisei mexer neles para fixar o tamanho da tela quando abrir o modal)
+const containerProj = document.getElementsByClassName("container-projetos")[0]; // Container que envolve os projects
+const body = document.getElementsByTagName("body")[0];
 
 // Imagens a serem exibidas nos modais
-const containerModais = document.getElementsByClassName("container-modal")[0]; // Container que envolve os modais
 let preview = document.getElementById("exibir-projeto"); // Imagem exibida no primeiro modal
 let preview2 = document.getElementById("exibir-projeto-2"); // Imagem exibida no segundo modal
 
@@ -33,6 +34,8 @@ const btnSalvar = document.getElementById("btnSalvar"); // Botão para enviar o 
 // Abre e fecha o primeiro modal
 function openModal() {
     modal.style.display = "flex";
+    
+    abriContainer()    
 }
 
 function closeModal() {
@@ -40,23 +43,24 @@ function closeModal() {
     preview.style.display = 'none';
     BtnInput.style.display = 'inline';
     preview2.src = "/";
-    
+
+    fecharContainer()
     LimparForm()
 }
 
 // Abre e fecha o segundo modal
 function openModal2() {
     modal2.style.display = "flex";
-    containerModais.style.height = "75rem";
     autocompletar();
+    capturaTags();
 }
 
 function closeModal2() {
     modal2.style.display = "none";
-    containerModais.style.height = "57rem";
+    limparTags()
 }
 
-// Abre e fecha o último modal
+// Abre e fecha o último modal (Botao Salvar)
 function openModal3() {
     modal.style.display = "flex";
     modal1.style.display = "none";
@@ -66,6 +70,7 @@ function openModal3() {
     preview2.src = "/";
     preview.style.display = 'none';
     BtnInput.style.display = 'inline';
+    fecharContainer()
     LimparForm()
 }
 
@@ -100,7 +105,7 @@ inputIMG.addEventListener("change", () => {
     }
 });
 
-// Preenche os campos da prévia com o que está sendo preenchido nos campos do formulário
+// Preenche os campos do preview com o que está sendo preenchido nos campos do formulário
 // Funcao sendo chamada dentro do openModal2(botao de visualzação)
 function autocompletar() {
     if (inptTitle.value === "") {
@@ -125,8 +130,100 @@ function autocompletar() {
 
 //limpar campos do formulário
 function LimparForm() {
-    inptTitle.value = ""; 
-    inptLink.value = ""; 
-    inptDescricao.value = ""; 
+    inptTitle.value = "";
+    inptLink.value = "";
+    inptDescricao.value = "";
     inptTag.value = "";
+
 }
+
+//Capturar as tags no input e exibir no preview
+function capturaTags() {
+    let palavras = inptTag.value.split(/\s+/);
+
+    if (inptTag.value !== "") {
+        palavras.forEach(tag => {
+
+            let paragrafo = document.createElement("p");
+            paragrafo.textContent = tag;
+            previewTag.appendChild(paragrafo)
+        });
+    }
+
+}
+
+
+//Atualizar as tags quando sair do preview
+function limparTags() {
+    previewTag.innerHTML = ""
+}
+
+
+
+//Exibir data atualizada no preview
+attData()
+function attData(){
+    let date = document.querySelector("#date")
+    console.log(date.textContent)
+
+    let dataAtual = new Date();
+    let ano = dataAtual.getFullYear().toString().slice(-2);
+    let mes = dataAtual.getMonth() + 1; 
+    let dataFormatada = mes + '/' + ano;
+    
+    date.textContent = dataFormatada;
+}
+
+
+//Precisei limitar manualmente o tamanho do meu container modal (sombra) 
+//para cubrir meu modal
+function abriContainer(){
+    body.style.height = "100vh"
+    containerProj.style.height = "50rem"
+    containerProj.style.overflow = "hidden"
+}
+
+function fecharContainer(){
+    containerProj.style.height = "auto"
+    containerProj.style.overflow = "visible"
+
+}
+
+
+//Open menu mobile
+const menuMob = document.getElementsByClassName("drop")[0];
+const menuMobLinks = document.getElementsByClassName("drop-2")[0];
+let menuVisible = false; 
+
+// Função para controlar o menu mobile
+function controlMenuMobile() {
+    if (menuVisible) {
+        closeMenuMob(); 
+    } else {
+        openMenuMob(); 
+    }
+}
+
+function openMenuMob() {
+    menuMob.style.display = "flex";
+    menuVisible = true;
+}
+
+function closeMenuMob() {
+    menuMob.style.display = "none";
+    menuVisible = false;
+}
+
+menuMob.addEventListener('click', controlMenuMobile);
+menuMobLinks.addEventListener('click', function() {
+    console.log("Drop-2 clicado");
+})
+
+
+//Sair para tela de login
+const btnLogout = document.getElementsByClassName("drop-3")[0];
+
+function logout(){
+    window.location.href = "../login/index.html"
+}
+
