@@ -31,8 +31,13 @@ header {
     justify-content: space-between;
     align-items: center;
     flex-shrink: 0;
-    border-bottom: 1px solid #113;
+    border-bottom: 1px solid var(--cor-7);
     background: var(--cor-7);
+}
+
+.menu {
+    display: none;
+    cursor: pointer;
 }
 
 .h-1 {
@@ -65,6 +70,51 @@ header {
     flex-shrink: 0;
     border-radius: 50%;
 }
+
+.drop {
+    width: 220px;
+    height: 226px;
+    background: white;
+    box-shadow: 0px 6px 6px -3px rgba(0, 0, 0, 0.20);
+    border-radius: 4px;
+    overflow: hidden;
+    flex-direction: column;
+   
+    align-items: flex-start;
+    display:none;
+    position: absolute;
+}
+
+.drop div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    padding: 1.2rem 0 1.2rem  1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.10);
+}
+
+.drop-2 a{
+    text-decoration: none;
+    color: #0B0C0D;
+}
+
+.drop-3{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 10rem;
+    height: 3rem;
+    margin-left: 1rem;
+    background: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.drop-3 img{
+    width: 2.5rem;
+}
+
 
 .section-1 {
     display: flex;
@@ -128,6 +178,11 @@ header {
     align-items: flex-start;
     gap: var(--1, 0.5rem);
     border-radius: var(--none, 0rem);
+    
+}
+
+.bloco:first-child{
+    cursor: pointer;
 }
 
 
@@ -142,12 +197,20 @@ header {
 .container-modal{
     position: absolute;
     top: 0px;
-    height: 52rem;
+    height: 130%;
     width: 100%;
     background: var(--components-backdrop-fill, rgba(0, 0, 0, 0.50));
     display: none;
     justify-content: center;
     padding-top: 8.94rem;
+}
+
+
+@media screen and (max-width:1070px) {
+
+    .container-modal{
+        height: 140%;
+    }
 }
 
 .modal-projeto {
@@ -160,6 +223,10 @@ header {
     background: var(--cor-5);
     padding: 3.5rem 6.38rem 5.18rem 6.38rem;
     z-index: 2;
+}
+
+.modal-projeto img:first-child{
+    cursor: pointer;
 }
 
 .close {
@@ -250,4 +317,24 @@ span {
     font-weight: 400;
     line-height: 1rem;
     letter-spacing: 0.00938rem;
+}
+
+@media screen and (max-width:900px) {
+    .menu {
+        display: inline;
+        width: 3.5rem;
+        position: absolute;
+        left: 0;
+    }
+
+    .h-1 {
+        display: flex;
+        align-items: center;
+        gap: 4.25rem;
+        padding-left: 2rem;
+    }
+
+    .h-1 a {
+        display: none;
+    }
 }
