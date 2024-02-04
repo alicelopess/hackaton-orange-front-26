@@ -272,6 +272,65 @@ header {
 
 
 
+
+
+
+
+/* Formatação dos projetos exbidos do back end*/
+.container-criados{
+    display: flex;
+    gap: 1.5rem;
+    background-color: red;
+    width: 100%;
+    height: auto;
+    
+}
+
+.projetos-criados{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 24.3125rem;
+    height: 20rem;
+    background: blue;
+}
+
+.img-proj-criado{
+    width: 24.313rem;
+    height: 16.125rem;
+    object-fit: cover;
+    border-radius: 0.55rem;
+}
+
+.description-proj{
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    gap: 0.2rem;
+    background: green;
+}
+
+.img-proj-criado-user{
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 2rem;
+}
+
+
+.options-criados{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 1.75rem;
+}
+
+
+
+
+
+
+
+
 /* Primeiro Modal (Adicionar projeto) */
 
 .container-modal {

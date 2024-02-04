@@ -307,7 +307,7 @@ function addProject(project) {
 }
 
 
-
+// let projetosCriados = document.querySelector(".")
 
 //Tratamento da imagem
 function convertBase64(){
