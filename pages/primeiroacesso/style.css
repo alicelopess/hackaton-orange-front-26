@@ -83,25 +83,25 @@ header {
     flex-direction: column;
 
     align-items: flex-start;
-    display:none;
+    display: none;
     position: absolute;
 }
 
-.drop div{
+.drop div {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
-    padding: 1.2rem 0 1.2rem  1rem;
+    padding: 1.2rem 0 1.2rem 1rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.10);
 }
 
-.drop-2 a{
+.drop-2 a {
     text-decoration: none;
     color: #0B0C0D;
 }
 
-.drop-3{
+.drop-3 {
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -113,7 +113,7 @@ header {
     cursor: pointer;
 }
 
-.drop-3 img{
+.drop-3 img {
     width: 2.5rem;
 }
 
@@ -272,7 +272,6 @@ header {
 
 
 
-
 /* Primeiro Modal (Adicionar projeto) */
 
 .container-modal {
@@ -288,19 +287,14 @@ header {
     padding-top: 8.94rem;
 }
 
+/* O media abaixo foi utilizado para corrigir umn bug no container que envolvolve o modal (sombra), pois
+quando mudamos para uma resolução menor (notebook) ele não acompanha até o fim da tela. */
 @media screen and (max-width:1500px) {
     .container-modal {
-        height: 210%;
+        height: 250%;
     }
 
 }
-
-/* O media abaixo foi utilizado para corrigir umn bug no container que envolvolve o modal (sombra), pois
-quando mudamos para uma resolução menor (notebook) ele não acompanha até o fim da tela. 
-
-Detalhe: Eu utilizei de forma contrária, ou seja ele apenas á válido para resoluções acima de 900px*/
-
-
 
 
 .modal-1 {
@@ -333,9 +327,7 @@ Detalhe: Eu utilizei de forma contrária, ou seja ele apenas á válido para res
     letter-spacing: 0.00938rem;
 }
 
-
-
-/* Imagem exibida pelo usuárop*/
+/* Imagem exibida pelo usuário*/
 #exibir-projeto {
     width: 24.3125rem;
     height: 19rem;
@@ -381,7 +373,6 @@ Detalhe: Eu utilizei de forma contrária, ou seja ele apenas á válido para res
     flex-shrink: 0;
     color: var(--Neutral-Colors-Neutral-100, var(--cor-3));
     font-feature-settings: 'clig' off, 'liga' off;
-    font-family: Roboto;
     font-size: 1rem;
     font-style: normal;
     font-weight: 400;
@@ -618,7 +609,19 @@ span {
 
 
 
-@media screen and (max-width:900px) {
+@media screen and (max-width:950px) {
+    .container-modal {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 210%;
+        width: 100%;
+
+        display: none;
+        justify-content: center;
+        padding-top: 8.94rem;
+    }
+
     .menu {
         display: inline;
         width: 3.5rem;
@@ -704,4 +707,151 @@ span {
         text-align: start;
     }
 
+
+    /*Em desenvolvimento*/
+    .modal-1 {
+        max-width: 90%;
+        margin: 0;
+        height: 53.688rem;
+    }
+
+
+    .modal-1 h4 {
+        width: 100%;
+    }
+
+    .modal-1 p {
+        margin-top: 1rem;
+    }
+
+    .enviar-projeto-2 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 23.25rem;
+        height: 19rem;
+        padding: 5.69rem auto;
+        text-align: center;
+        border-radius: var(--borderRadius, 0.25rem);
+        background: var(--Neutral-Colors-Neutral-70, #E6E9F2);
+        border: none;
+    }
+
+    .enviar-projeto-2 p {
+        width: 16rem;
+        font-size: 0.875rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 0.875rem;
+        letter-spacing: 0.01563rem;
+    }
+
+    #Form-modal-1 {
+        position: static;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        top: 4.5rem;
+        left: auto;
+
+        width: 100%;
+        height: 21rem;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    #Form-modal-1 input {
+        width: 100%;
+        flex-shrink: 0;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.5rem;
+        letter-spacing: 0.00938rem;
+
+        border-radius: var(--borderRadius, 0.25rem);
+        border: var(--none, 1px) solid var(--components-input-outlined-enabledBorder, rgba(0, 0, 0, 0.23));
+    }
+
+    #descricao {
+        height: 7.1rem;
+        padding: 1rem 0.75rem 4.5rem 0.75rem;
+    }
+
+
+
+    /* Modal de visualização*/
+
+    .container-projetos{
+        overflow: hidden;
+        height: 10rem;
+    }
+
+    .modal-2 {
+        align-items:  center;
+        width: 100%;
+        border-top-left-radius: 1.5rem;
+        border-top-right-radius: 1.5rem;
+    }
+
+
+    #exibir-projeto-2 {
+        display: flex;
+        object-fit: cover;
+        margin-top: 2.05rem;
+        max-width: 85vw;
+        height: 20rem;
+        border-radius: var(--none, 0rem);
+        margin-top: 5rem;
+        
+    }
+
+    .title{
+        justify-content: space-between;
+        width: 85vw;
+        height: 20rem;
+        margin-top: 1rem;
+        order: 2;
+        gap: 2rem;
+    }
+
+    .title h5{
+        position: absolute;
+        width: 85vw;
+        top: 4.5rem;
+        text-align: center;
+    }
+
+    .container-tags{
+        height:auto;
+        background: red;
+        width: 20rem;
+    }
+
+    .descricao{
+        order: 3;
+        width: 85vw;
+    }
+}
+
+
+@media screen and (max-width:484px) {
+    .modal-1 {
+        margin: 0;
+        height: 54.688rem;
+    }
+
+    .enviar-projeto-2 {
+        width: 100%;
+    }
+
+    .enviar-projeto-2 p {
+        width: 100%;
+    }
+
+    #exibir-projeto {
+        width: 100%;
+        object-fit: fill;
+    }
 }

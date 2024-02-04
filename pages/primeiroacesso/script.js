@@ -34,8 +34,8 @@ const btnSalvar = document.getElementById("btnSalvar"); // Botão para enviar o 
 // Abre e fecha o primeiro modal
 function openModal() {
     modal.style.display = "flex";
-    
-    abriContainer()    
+
+    abriContainer()
 }
 
 function closeModal() {
@@ -53,11 +53,15 @@ function openModal2() {
     modal2.style.display = "flex";
     autocompletar();
     capturaTags();
+    fixedPreview()
+
 }
 
 function closeModal2() {
     modal2.style.display = "none";
-    limparTags()
+
+    limparTags();
+    resetPreview();
 }
 
 // Abre e fecha o último modal (Botao Salvar)
@@ -162,28 +166,28 @@ function limparTags() {
 
 //Exibir data atualizada no preview
 attData()
-function attData(){
+function attData() {
     let date = document.querySelector("#date")
     console.log(date.textContent)
 
     let dataAtual = new Date();
     let ano = dataAtual.getFullYear().toString().slice(-2);
-    let mes = dataAtual.getMonth() + 1; 
+    let mes = dataAtual.getMonth() + 1;
     let dataFormatada = mes + '/' + ano;
-    
+
     date.textContent = dataFormatada;
 }
 
 
 //Precisei limitar manualmente o tamanho do meu container modal (sombra) 
 //para cubrir meu modal
-function abriContainer(){
+function abriContainer() {
     body.style.height = "100vh"
     containerProj.style.height = "50rem"
     containerProj.style.overflow = "hidden"
 }
 
-function fecharContainer(){
+function fecharContainer() {
     containerProj.style.height = "auto"
     containerProj.style.overflow = "visible"
 
@@ -193,14 +197,14 @@ function fecharContainer(){
 //Open menu mobile
 const menuMob = document.getElementsByClassName("drop")[0];
 const menuMobLinks = document.getElementsByClassName("drop-2")[0];
-let menuVisible = false; 
+let menuVisible = false;
 
 // Função para controlar o menu mobile
 function controlMenuMobile() {
     if (menuVisible) {
-        closeMenuMob(); 
+        closeMenuMob();
     } else {
-        openMenuMob(); 
+        openMenuMob();
     }
 }
 
@@ -215,15 +219,36 @@ function closeMenuMob() {
 }
 
 menuMob.addEventListener('click', controlMenuMobile);
-menuMobLinks.addEventListener('click', function() {
+menuMobLinks.addEventListener('click', function () {
     console.log("Drop-2 clicado");
 })
 
 
-//Sair para tela de login
+//Sair para tela de login / Mobile
 const btnLogout = document.getElementsByClassName("drop-3")[0];
-
-function logout(){
+function logout() {
     window.location.href = "../login/index.html"
 }
 
+
+//Fixar tela de visualização do projeto / Mobile
+function fixedPreview() {
+    window.scrollTo(0, 0);
+    if (window.innerWidth < 900) {
+        modal.style.height = "100vh"
+        containerProj.style.height = "10rem"
+    }
+}
+
+function resetPreview() {
+
+
+    if (window.innerWidth < 1500) {
+        modal.style.height = "220%"
+        containerProj.style.height = "auto"
+    } else {
+        modal.style.height = "150%"
+        containerProj.style.height = "auto"
+    }
+
+}

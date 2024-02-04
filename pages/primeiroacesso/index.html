@@ -12,7 +12,8 @@
 <body>
     <header>
         <div class="h-1 h">
-            <img class="menu" src="../../assets/menu-icon.jpg" alt="imagem logo orange-portifolio"  onclick="controlMenuMobile()">
+            <img class="menu" src="../../assets/menu-icon.jpg" alt="imagem logo orange-portifolio"
+                onclick="controlMenuMobile()">
             <img src="../../assets/Logo orange.png" alt="imagem logo orange-portifolio">
 
             <nav>
@@ -40,7 +41,7 @@
         </div>
 
         <button class="drop-3 h" onclick="logout()">
-            <img src="../../assets/icon-logot.png" alt="botão de sair"> 
+            <img src="../../assets/icon-logot.png" alt="botão de sair">
             <p>Sair</p>
         </button>
     </div>
@@ -77,14 +78,6 @@
         <div class="container-modal">
             <div class="modal-1">
                 <h4>Adiconar projeto</h4>
-                <p>Selecione o conteúdo que você deseja fazer upload</p>
-
-                <img id="exibir-projeto" src="" alt="">
-                <button type="file" class="enviar-projeto-2 h">
-                    <img src="../../assets/collections.svg" alt="icone do input para enviar imagens">
-                    <p class="p-2">Compartilhe seu talento com milhares de pessoas</p>
-                </button>
-
                 <form action="https://hackaton-orange-back-26.onrender.com/projects" method="POST" id="Form-modal-1">
                     <input id="titulo" type="text" name="titulo" placeholder="Título">
                     <input id="tags" type="text" name="tags" placeholder="Tags">
@@ -94,6 +87,13 @@
 
                     <input id="Enviar" onclick="openModal3()" type="submit" style="display: none;">
                 </form>
+                <p>Selecione o conteúdo que você deseja fazer upload</p>
+
+                <img id="exibir-projeto" src="" alt="">
+                <button type="file" class="enviar-projeto-2 h">
+                    <img src="../../assets/collections.svg" alt="icone do input para enviar imagens">
+                    <p class="p-2">Compartilhe seu talento com milhares de pessoas</p>
+                </button>
 
                 <div class="modal-bts">
                     <p onclick="openModal2()" class="h">Visualizar publicação</p>
@@ -117,7 +117,9 @@
 
                     <h5></h5>
 
-                    <div class="tags">
+                    <div class="container-tags">
+                        <div class="tags">
+                        </div>
                     </div>
                 </div>
 
