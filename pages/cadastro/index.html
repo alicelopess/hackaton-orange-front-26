@@ -17,9 +17,16 @@
 
         <div class="login">
 
-            <div class="sucesso">
-                <img src="../../assets/Sucesso B.svg" alt="">
-                <h2>Cadastro feito com sucesso</h2>
+            <div class="status">
+                <div class="sucesso">
+                    <img src="../../assets/status-sucess.png" alt="">
+                    <h2>Cadastro feito com sucesso</h2>
+                </div>
+
+                <div class="Error-email">
+                    <img src="../../assets/status-erro.png" alt="">
+                    <h2>Ocorreu um erro ao tentar realizar o cadastro</h2>
+                </div>
             </div>
 
             <h1>Cadastre-se</h1>
@@ -37,10 +44,12 @@
                     </div>
                 </div>
 
-                <label id="lb-3">Email address </label>
-                <input type="email">
+                <div id="input-email" class="format-erro">
+                    <label id="lb-3">Email</label>
+                    <input type="email">
+                </div>
 
-                <label id="lb-4">Password </label>
+                <label id="lb-4">Senha</label>
                 <input type="password" name="password">
 
                 <input id="submit" type="submit" value="Cadastrar">
@@ -49,4 +58,5 @@
     </div>
     <script src="./script.js"> </script>
 </body>
+
 </html>

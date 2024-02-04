@@ -5,6 +5,7 @@
     --cor-4: #F52;
     --cor-5: #FCFDFF;
     --cor-6: #303133;
+    --cor-7: #2E7D32;
 }
 
 * {
@@ -34,23 +35,41 @@
     height: 100vh;
 }
 
+.status {
+    width: 19.5rem;
+    height: 4.75rem;
+}
 
 .sucesso {
-    display: flex;
-    width: 320px;
+    display: none;
+    align-items: center;
+    width: 19.5rem;
+    height: 3.25rem;
     padding: 10px 16px;
     gap: 1rem;
     border-radius: 4px;
-    align-items:center;
     background-color: var(--cor-7);
 }
 
-.sucesso img {
-    width: 22px;
-    height: 22px;
+.Error-email {
+    display: flex;
+    align-items: center;
+    width: 19.5rem;
+    height: 4.75rem;
+    padding: 10px 16px;
+    gap: 1rem;
+    border-radius: 4px;
+    background-color: red;
 }
 
-.sucesso h2 {
+.status img {
+    width: 2rem;
+    height: 2rem;
+}
+
+.status h2 {
+    display: flex;
+    align-items: center;
     align-self: stretch;
     font-size: 1rem;
     font-style: normal;
@@ -104,11 +123,12 @@ label {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
 }
 
 .row input {
     width: 15.5rem;
-    
+
 }
 
 .row div {
@@ -124,6 +144,19 @@ label {
     top: 23px;
     left: 280px;
 }
+
+/* Formatação caso o e-mail já esteja vinculado */
+
+.format-erro label {
+    color: red;
+}
+
+.format-erro input {
+    border: 1px solid red;
+}
+
+/* Continuação do código*/
+
 
 #lb-3 {
     top: 99px;
@@ -208,11 +241,13 @@ form a {
     .login {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: start;
         align-items: center;
         gap: 2rem;
         width: 100%;
         height: 100vh;
+        margin-top: 4rem;
+
     }
 
     .login h1 {
@@ -220,12 +255,34 @@ form a {
         font-style: normal;
         font-weight: 400;
         line-height: 1.5rem;
+        margin-top: 1rem;
     }
 
 
-
     form {
+        padding-top: 1.5rem;
+        justify-content: center;
+        align-items: center;
         width: 19.5rem;
+        height: 20.625rem;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 0px;
+        margin-top: 1rem;
+        gap: 1.125rem;
+    }
+
+    .row div {
+        width: 19.5rem;
+    }
+
+    .row input {
+        width: 100%;
     }
 
     .form-title {
@@ -249,12 +306,22 @@ form a {
     }
 
     #lb-1 {
-        top: 29px;
+        top: 4px;
         left: 13px;
     }
 
     #lb-2 {
-        top: 105px;
+        top: 79px;
+        left: 13px;
+    }
+
+    #lb-3 {
+        top: 156px;
+        left: 13px;
+    }
+
+    #lb-4 {
+        top: 232px;
         left: 13px;
     }
 

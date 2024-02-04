@@ -220,7 +220,7 @@ header {
 }
 
 .enviar-projeto {
-    display: flex;
+    display: none;
     flex-direction: column;
     width: 24.3125rem;
     height: 16.125rem;
@@ -263,7 +263,7 @@ header {
 .bloco {
     width: 24.3125rem;
     height: 16.125rem;
-    display: flex;
+    display: none;
     flex-shrink: 0;
 
     border-radius: var(--borderRadius, 0.25rem);
@@ -278,7 +278,7 @@ header {
     position: absolute;
     top: 0;
     left: 0;
-    height: 140%;
+    height: 145%;
     width: 100%;
     background: var(--components-backdrop-fill, rgba(0, 0, 0, 0.50));
 
@@ -291,7 +291,7 @@ header {
 quando mudamos para uma resolução menor (notebook) ele não acompanha até o fim da tela. */
 @media screen and (max-width:1500px) {
     .container-modal {
-        height: 250%;
+        height: 220%;
     }
 
 }
@@ -677,12 +677,15 @@ span {
     }
 
     .container-projetos {
+        padding: 2.5rem 2rem;
+        flex-wrap: wrap;
+        margin-top: 1.65rem;
         display: flex;
         justify-content: center;
         padding: 0;
         gap: 1.5rem;
-        margin: 1.6rem 0 4.94rem 0;
     }
+
 
     .enviar-projeto {
         display: flex;
@@ -782,14 +785,10 @@ span {
 
 
     /* Modal de visualização*/
-
-    .container-projetos{
-        overflow: hidden;
-    }
-
     .modal-2 {
         align-items:  center;
         width: 100%;
+        height: 110%;
         border-top-left-radius: 1.5rem;
         border-top-right-radius: 1.5rem;
     }
@@ -824,7 +823,6 @@ span {
 
     .container-tags{
         height:auto;
-        background: red;
         width: 20rem;
     }
 

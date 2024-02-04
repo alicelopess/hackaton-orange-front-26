@@ -89,17 +89,32 @@ BtnInput.addEventListener("click", () => {
     inputIMG.click();
 });
 
-// Funcionalidade para o usuário enviar a imagem
+
+//local onde ficará a imagem convertida
+let imagemBase64;
+
+// Funcionalidade para o usuário enviar a imagem + conversão em base 64 para enviar pro backend
 inputIMG.addEventListener("change", () => {
     let file = inputIMG.files[0];
 
+    // Antes de converter o arquivo, precisa verificar o tamanho dele
     if (file) {
-        var leitura = new FileReader();
-        leitura.onload = function (event) {
-            var imageUrl = event.target.result;
+        const limiteTamanho = 10 * 1024 * 1024; //Criei essa var como parâmetro para comparar o tamanho
+        if (file.size > limiteTamanho) {
+            alert('Tamanho não suportado, por favor escolha um arquivo menor.');
+            inputIMG.value = ''; // Caso o arquivo não atenda, exclui a alocação dele e deixa o input vazio
+            return;
+        }
 
-            preview.src = imageUrl;
-            preview2.src = imageUrl;
+        //Conversão de imagem para string.
+        //É preciso ler o arquivo antes de executar a conversão 
+        let leitura = new FileReader(); // FileReader() é um método nativo do js 
+        leitura.onload = function (event) {
+            imagemBase64 = event.target.result;
+            console.log(imagemBase64)
+            
+            preview.src = imagemBase64;
+            preview2.src = imagemBase64;
             preview.style.display = 'inline';
             BtnInput.style.display = 'none';
         };
@@ -108,6 +123,7 @@ inputIMG.addEventListener("change", () => {
         alert('Nenhum arquivo selecionado.');
     }
 });
+
 
 // Preenche os campos do preview com o que está sendo preenchido nos campos do formulário
 // Funcao sendo chamada dentro do openModal2(botao de visualzação)
@@ -235,14 +251,13 @@ function logout() {
 function fixedPreview() {
     window.scrollTo(0, 0);
     if (window.innerWidth < 900) {
-        modal.style.height = "100vh"
-        containerProj.style.height = "10rem"
+        modal.style.height = "150%"
+        containerProj.style.height = "50rem"
+        containerProj.style.overflow = "hidden"
     }
 }
 
 function resetPreview() {
-
-
     if (window.innerWidth < 1500) {
         modal.style.height = "220%"
         containerProj.style.height = "auto"
@@ -289,4 +304,14 @@ function addProject(project) {
         .catch(error => {
             console.log(error)
         })
+}
+
+
+
+
+//Tratamento da imagem
+function convertBase64(){
+
+
+
 }
