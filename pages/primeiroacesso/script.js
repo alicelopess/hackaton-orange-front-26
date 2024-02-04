@@ -252,3 +252,41 @@ function resetPreview() {
     }
 
 }
+
+//Teste de Integração
+
+// url
+const path = "projects" //pode ser user
+const url = `http://localhost:3333/${path}`
+
+function atribuicaoTeste() {
+    //inputs do form
+    let inptTitle = document.getElementById("titulo").value
+    let inptTag = document.getElementById("tags").value
+    let inptLink = document.getElementById("link").value
+    let inptDescription = document.getElementById("descricao").value
+
+
+    const project = {
+        title: inptTitle,
+        tag: inptTag,
+        link: inptLink,
+        description: inptDescription,
+        image: "image"
+    }
+
+    addProject(project)
+}
+
+function addProject(project) {
+    axios.post(url, project)
+        .then(response => {
+            openModal3()
+            console.log(response)
+            const data = response.data
+            //alert(data)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+}
