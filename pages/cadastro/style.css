@@ -168,6 +168,33 @@ label {
     left: 13px;
 }
 
+.exibicaoSenha{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom:107px;
+    right: 20px;
+
+    padding:0.3rem;
+    border-radius: 2rem;
+    width: 1rem;
+}
+
+.exibicaoSenha:hover{
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.exibirSenha{
+    display:flex;
+}
+
+.ocultarSenha{
+    display: none;
+    padding-bottom: 0.12rem;
+}
+
 input {
     width: 32.3125rem;
     display: flex;
@@ -341,4 +368,8 @@ form a {
         flex-shrink: 0;
     }
 
+
+    .exibicaoSenha{
+        bottom:45px;
+    }
 }

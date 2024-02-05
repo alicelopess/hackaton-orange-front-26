@@ -27,13 +27,19 @@
                 <input type="email" name="email">
 
                 <label id="lb-2">Senha</label>
-                <input type="password" name="password">
+                <input id="inputSenh" type="password" name="password">
 
                 <input id="submit" type="submit" value="Entrar">
                 <a id="btnPass" href="./pages/cadastro/index.html">Cadastre-se</a>
+
+                <div class="exibicaoSenha" >
+                    <img class="exibirSenha" src="./assets/visibility.png" alt="Botão para exibir senha" onclick="optionSenha()">
+                    <img class="ocultarSenha" src="./assets/Vector.png" alt="Botão para exibir senha" onclick="optionSenha()">
+                </div>
             </form>
         </div>
     </div>
     <script src="./pages/login/script.js"> </script>
 </body>
+
 </html>

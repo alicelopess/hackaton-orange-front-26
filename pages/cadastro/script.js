@@ -1,5 +1,27 @@
-const mensagemSuc = document.getElementsByClassName("sucesso")[0]
-console.log(mensagemSuc)
+const mensagemSuc = document.getElementsByClassName("sucesso")[0] //Noticação de sucesso
+
+let visibleSenh = document.getElementsByClassName("exibirSenha")[0]
+let hiddenSenh = document.getElementsByClassName("ocultarSenha")[0]
+let senhaInput = document.getElementById("inputSenh");
+
+
+let verfSnha = true; 
+function optionSenha() {
+
+
+    if (verfSnha) {
+        visibleSenh.style.display = "none";
+        hiddenSenh.style.display = "inline";
+        senhaInput.type = "text";
+    } else {
+        hiddenSenh.style.display = "none";
+        visibleSenh.style.display = "inline"; 
+        senhaInput.type = "password";
+    }
+    verfSnha = !verfSnha; 
+}
+
+
 
 
 
@@ -13,3 +35,8 @@ function redirect() {
         }, 2000);
     }, 2000);
 }
+
+
+
+
+
