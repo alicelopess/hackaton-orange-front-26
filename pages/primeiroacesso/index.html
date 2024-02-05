@@ -77,99 +77,115 @@
         <div class="bloco"></div>
 
         <!--Container onde serão exibidos os projetos criados (Retorno das infos do backend)-->
-        <div class="container-criados">
+        <!-- <div class="container-criados">
             <div class="projetos-criados">
                 <img class="img-proj-criado" src="../../assets/test.png" alt="">
 
-                <div class="description-proj">
-                    <img class="img-proj-criado-user" src="../../assets/Image.png" alt="">
-                    <p id="Name-auth">Camila Soares</p> •
-                    <p id="date-proj">12/23</p>
+                <div class="projeto-infos">
+                    <div class="description-proj">
+                        <img class="img-proj-criado-user" src="../../assets/Image.png" alt="">
+                        <p id="Name-auth">Camila Soares</p> •
+                        <p id="date-proj">12/23</p>
+                    </div>
 
                     <div class="description-proj-tags">
                         <p>UX</p>
                         <p>web</p>
                     </div>
-                </div>
 
+                    <img class="options-criados h" src="../../assets/icon_edit.svg" alt="opções sobre o projeto">
 
-                <img class="options-criados h" src="../../assets/icon_edit.svg" alt="opções sobre o projeto">
-
-                <div class="balao-options">
-                    <button>Editar</button>
-                    <button> Excluir </button>
-                </div>
-            </div>
-        </div>
-        .
-
-        <!-- Primeiro Modal (Adicionar projeto)-->
-        <div class="container-modal">
-            <div class="modal-1">
-                <h4>Adiconar projeto</h4>
-                <form action="https://hackaton-orange-back-26.onrender.com/projects" method="POST" id="Form-modal-1">
-                    <input id="titulo" type="text" name="titulo" placeholder="Título">
-                    <input id="tags" type="text" name="tags" placeholder="Tags">
-                    <input id="link" type="text" name="link" placeholder="Link">
-                    <input id="descricao" type="text" name="descricao" placeholder="Descrição ">
-                    <input type="file" id="input-file" style="display: none ;" accept="image/*">
-
-                    <input id="Enviar" onclick="openModal3()" type="submit" style="display: none;">
-                </form>
-                <p>Selecione o conteúdo que você deseja fazer upload</p>
-
-                <img id="exibir-projeto" src="" alt="">
-                <button type="file" class="enviar-projeto-2 h">
-                    <img src="../../assets/collections.svg" alt="icone do input para enviar imagens">
-                    <p class="p-2">Compartilhe seu talento com milhares de pessoas</p>
-                </button>
-
-                <div class="modal-bts">
-                    <p onclick="openModal2()" class="h">Visualizar publicação</p>
-                    <button id="btnSalvar" onclick="atribuicaoTeste()" class="h"> SALVAR</button>
-                    <button id="btnClose" type="reset" form="Forme-modal-1" onclick="closeModal()"
-                        class="h">CANCELAR</button>
-                </div>
-            </div>
-
-            <!-- Segundo modal (Demonstração do projeto)-->
-            <div class="modal-2">
-                <img onclick="closeModal2()" class="close h" src="../../assets/close.svg" alt="close-menu">
-                <div class="title">
-                    <div class="title-1">
-                        <img class="icon-user" src="../../assets/Image.png" alt="icone usuario">
-                        <div class="title-infos">
-                            <p>Camila Soares</p>
-                            <p id="date"></p>
-                        </div>
+                    <div class="balao-options">
+                        <button class="h" onclick="editar()">Editar</button>
+                        <button class="h" onclick="excluir()"> Excluir </button>
                     </div>
+                </div>
+            </div> -->
 
-                    <h5></h5>
 
-                    <div class="container-tags">
-                        <div class="tags">
-                        </div>
+
+            <!-- Primeiro Modal (Adicionar projeto)-->
+            <div class="container-modal">
+                <div class="modal-1">
+                    <h4>Adiconar projeto</h4>
+                    <form action="https://hackaton-orange-back-26.onrender.com/projects" method="POST"
+                        id="Form-modal-1">
+                        <input id="titulo" type="text" name="titulo" placeholder="Título">
+                        <input id="tags" type="text" name="tags" placeholder="Tags">
+                        <input id="link" type="text" name="link" placeholder="Link">
+                        <input id="descricao" type="text" name="descricao" placeholder="Descrição ">
+                        <input type="file" id="input-file" style="display: none ;" accept="image/*">
+
+                        <input id="Enviar" onclick="openModal3()" type="submit" style="display: none;">
+                    </form>
+                    <p>Selecione o conteúdo que você deseja fazer upload</p>
+
+                    <img id="exibir-projeto" src="" alt="">
+                    <button type="file" class="enviar-projeto-2 h">
+                        <img src="../../assets/collections.svg" alt="icone do input para enviar imagens">
+                        <p class="p-2">Compartilhe seu talento com milhares de pessoas</p>
+                    </button>
+
+                    <div class="modal-bts">
+                        <p onclick="openModal2()" class="h">Visualizar publicação</p>
+                        <button id="btnSalvar" onclick="atribuicaoTeste(), openModal3()" class="h"> SALVAR</button>
+                        <button id="btnClose" type="reset" form="Forme-modal-1" onclick="closeModal()"
+                            class="h">CANCELAR</button>
                     </div>
                 </div>
 
-                <img id="exibir-projeto-2" src="" alt="">
+                <!-- Segundo modal (Demonstração do projeto)-->
+                <div class="modal-2">
+                    <img onclick="closeModal2()" class="close h" src="../../assets/close.svg" alt="close-menu">
+                    <div class="title">
+                        <div class="title-1">
+                            <img class="icon-user" src="../../assets/Image.png" alt="icone usuario">
+                            <div class="title-infos">
+                                <p>Camila Soares</p>
+                                <p id="date"></p>
+                            </div>
+                        </div>
 
-                <div class="descricao">
-                    <p id="des-1"></p>
+                        <h5></h5>
 
-                    <span>Download</span>
-                    <a href=""></a>
+                        <div class="container-tags">
+                            <div class="tags">
+                            </div>
+                        </div>
+                    </div>
+
+                    <img id="exibir-projeto-2" src="" alt="">
+
+                    <div class="descricao">
+                        <p id="des-1"></p>
+
+                        <span>Download</span>
+                        <a href=""></a>
+                    </div>
+                </div>
+
+
+                <!-- Terceiro Modal (Confirmação do envio)-->
+                <div class="modal-3">
+                    <p>Projeto adicionado com sucesso!</p>
+                    <img class="modal-3-img" src="../../assets/confirmacao.svg" alt="imagem de confirmação do envio">
+                    <button class="voltar-proj h" onclick="closeModal3()">VOLTAR PARA PROJETOS</button>
+                </div>
+
+                <!-- Modal de exclu~são (Confirmação do envio)-->
+                <div class="modal-4">
+                    <h4>Deseja Excluir?</h4>
+                    <p>Se você prosseguir irá excluir o projeto do seu portfólio</p>
+
+                    <div class="modal-4-btns">
+                        <button class="btnSalvar4 h" onclick="atribuicaoTeste(), openModal3()" class="h"> Exlcuir</button>
+                        <button class="btnClose4 h" onclick="closeModal4()" class="h">CANCELAR</button>
+                    </div>
                 </div>
             </div>
-
-
-            <!-- Terceiro Modal (Confirmação do envio)-->
-            <div class="modal-3">
-                <p>Projeto adicionado com sucesso!</p>
-                <img class="modal-3-img" src="../../assets/confirmacao.svg" alt="imagem de confirmação do envio">
-                <button class="voltar-proj h" onclick="closeModal3()">VOLTAR PARA PROJETOS</button>
-            </div>
         </div>
+
+
 
         <script src="./script.js"></script>
 </body>

@@ -1,8 +1,9 @@
 // Selecionando elementos do DOM
 const modal = document.getElementsByClassName("container-modal")[0]; // Container envolvendo os modais
-const modal1 = document.getElementsByClassName("modal-1")[0]; // Primeiro modal
-const modal2 = document.getElementsByClassName("modal-2")[0]; // Segundo modal
-const modal3 = document.getElementsByClassName("modal-3")[0]; // Último modal
+const modal1 = document.getElementsByClassName("modal-1")[0]; // Primeiro modal do formulário
+const modal2 = document.getElementsByClassName("modal-2")[0]; // modal visualização do projeto
+const modal3 = document.getElementsByClassName("modal-3")[0]; // modal de confirmação de criação projeto
+const modal4 = document.getElementsByClassName("modal-4")[0]; // Modal de exclusão modal
 
 const BtnInput = document.getElementsByClassName("enviar-projeto-2")[0]; // Botão para adicionar imagem no primeiro modal
 const inputIMG = document.getElementById("input-file"); // Input invisível associado ao formulário e botão acima
@@ -31,10 +32,27 @@ let preview2 = document.getElementById("exibir-projeto-2"); // Imagem exibida no
 const inpSubmit = document.getElementById("Enviar"); // Input/Submit do formulário (Enviar)
 const btnSalvar = document.getElementById("btnSalvar"); // Botão para enviar o formulário
 
+
+// Adicione o código para exibir e ocultar o balão de opções para todos os elementos .options-criados
+const opcoesCriados = document.querySelectorAll(".options-criados");
+opcoesCriados.forEach(opcao => {
+    opcao.addEventListener("click", () => {
+        const balaoOption = opcao.nextElementSibling;
+        balaoOption.style.display = (balaoOption.style.display === "none" || balaoOption.style.display === "") ? "flex" : "none";
+    });
+
+    opcao.addEventListener("dblclick", (event) => {
+        event.preventDefault();
+    });
+});
+
+
+
+
 // Abre e fecha o primeiro modal
 function openModal() {
     modal.style.display = "flex";
-
+    modal1.style.display = "inline"
     abriContainer()
 }
 
@@ -64,7 +82,7 @@ function closeModal2() {
     resetPreview();
 }
 
-// Abre e fecha o último modal (Botao Salvar)
+// Abre e fecha o terceiro modal (Botao Salvar)
 function openModal3() {
     modal.style.display = "flex";
     modal1.style.display = "none";
@@ -112,7 +130,7 @@ inputIMG.addEventListener("change", () => {
         leitura.onload = function (event) {
             imagemBase64 = event.target.result;
             console.log(imagemBase64)
-            
+
             preview.src = imagemBase64;
             preview2.src = imagemBase64;
             preview.style.display = 'inline';
@@ -275,6 +293,7 @@ const path = "projects" //pode ser user
 const url = `http://localhost:3333/${path}`
 
 function atribuicaoTeste() {
+    modal4.style.display = "none"
     //inputs do form
     let inptTitle = document.getElementById("titulo").value
     let inptTag = document.getElementById("tags").value
@@ -307,11 +326,25 @@ function addProject(project) {
 }
 
 
-// let projetosCriados = document.querySelector(".")
+function editar() {
+    openModal()
+    modal4.style.display = "none";
+    balaoOption.style.display = "none";
+    modal1.style.display = "inline";
+}
 
-//Tratamento da imagem
-function convertBase64(){
+function excluir() {
+    modal.style.display = "inline";
+    modal1.style.display = "none";
+    modal3.style.display = "none";
+    modal4.style.display = "flex"
+
+}
 
 
+function closeModal4() {
+    modal4.style.display = "none";
+    modal.style.display = "none";
+    balaoOption.style.display = "none";
 
 }

@@ -9,6 +9,7 @@
     --cor-7: #113;
     --cor-8: #E6E9F2;
     --cor-9: #FEFEFE;
+    --cor-10: #FFEECC;
 }
 
 
@@ -277,58 +278,103 @@ header {
 
 
 /* Formatação dos projetos exbidos do back end*/
-.container-criados{
+.container-criados {
     display: flex;
+    flex-wrap: wrap;
     gap: 1.5rem;
-    background-color: red;
     width: 100%;
     height: auto;
-    
 }
 
-.projetos-criados{
+.projetos-criados {
     display: flex;
     flex-direction: column;
     position: relative;
     width: 24.3125rem;
-    height: 20rem;
-    background: blue;
+    height: 20.125rem;
+    flex-shrink: 0;
 }
 
-.img-proj-criado{
+@media screen and (max-width:1300) {
+    .projetos-criados {
+        width: 100%;
+    }
+}
+
+.img-proj-criado {
+    display: flex;
     width: 24.313rem;
     height: 16.125rem;
     object-fit: cover;
     border-radius: 0.55rem;
 }
 
-.description-proj{
+.projeto-infos {
+    width: 100%;
+    justify-content: space-around;
     display: flex;
     align-items: center;
     margin-top: 1rem;
-    gap: 0.2rem;
-    background: green;
 }
 
-.img-proj-criado-user{
+.description-proj {
+    display: flex;
+    width: 20rem;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.description-proj-tags {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 0.5rem;
+    width: 10rem;
+    min-height: 2.2rem;
+}
+
+.img-proj-criado-user {
     width: 2.25rem;
     height: 2.25rem;
     border-radius: 2rem;
 }
 
 
-.options-criados{
+.options-criados {
     position: absolute;
     top: 10px;
     right: 10px;
-    width: 1.75rem;
+    width: 1.8rem;
 }
 
+.balao-options {
+    position: absolute;
+    top: 40px;
+    right: 35px;
+    width: 13rem;
+    height: 6.5rem;
+    display: none;
+    gap: 0.5rem;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0.5rem;
+    background: var(--cor-9);
+}
 
+.balao-options button {
+    border: none;
+    height: auto;
+    padding: 0.4rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 0.3rem;
+    background: var(--cor-9);
+    color: var(--cor-2);
+    font-weight: 400;
+}
 
-
-
-
+.balao-options button:hover {
+    background: var(--cor-10);
+}
 
 
 /* Primeiro Modal (Adicionar projeto) */
@@ -354,7 +400,6 @@ quando mudamos para uma resolução menor (notebook) ele não acompanha até o f
     }
 
 }
-
 
 .modal-1 {
     position: absolute;
@@ -497,7 +542,6 @@ quando mudamos para uma resolução menor (notebook) ele não acompanha até o f
 }
 
 
-
 /* Segundo modal (Demonstração do projeto) */
 
 .modal-2 {
@@ -605,7 +649,6 @@ span {
 }
 
 
-
 /* último modal (Confirmação do envio) */
 .modal-3 {
     display: none;
@@ -666,6 +709,78 @@ span {
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.20), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 }
 
+.modal-4 {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    background: var(--cor-5);
+    width: 26.313rem;
+    height: 15.125rem;
+    margin-top: 2.5rem;
+    padding: 0.5rem 1.375rem;
+}
+
+.modal-4 h4 {
+    width: 255px;
+    color: var(--cor-2);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 24px;
+    word-wrap: break-word;
+}
+
+.modal-4-btns {
+    display: flex;
+}
+
+.btnSalvar4 {
+    width: 7.625rem;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.625rem;
+    letter-spacing: 0.02875rem;
+    text-transform: uppercase;
+    color: var(--cor-5);
+    background: var(--cor-4);
+    padding: 0.5rem 1.375rem;
+    margin-right: 1rem;
+
+    border: none;
+    border-radius: var(--borderRadius, 0.25rem);
+    background: var(--Color-Brand-Secundria-Secondary-100, var(--cor-4));
+
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.20), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
+.btnClose4 {
+    width: 7.625rem;
+    padding: 0.5rem 1.375rem;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.625rem;
+    letter-spacing: 0.02875rem;
+    text-transform: uppercase;
+    color: var(--cor-3);
+
+    border-radius: var(--borderRadius, 0.25rem);
+    background: var(--action-disabledBackground, rgba(0, 0, 0, 0.12));
+    border: none;
+}
+
+.modal-4-img {
+    background: green;
+    padding: 0.1rem;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+}
 
 
 @media screen and (max-width:950px) {
@@ -747,7 +862,6 @@ span {
 
 
     .enviar-projeto {
-        display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -841,11 +955,9 @@ span {
         padding: 1rem 0.75rem 4.5rem 0.75rem;
     }
 
-
-
     /* Modal de visualização*/
     .modal-2 {
-        align-items:  center;
+        align-items: center;
         width: 100%;
         height: 110%;
         border-top-left-radius: 1.5rem;
@@ -861,10 +973,10 @@ span {
         height: 20rem;
         border-radius: var(--none, 0rem);
         margin-top: 5rem;
-        
+
     }
 
-    .title{
+    .title {
         justify-content: space-between;
         width: 85vw;
         height: 20rem;
@@ -873,24 +985,62 @@ span {
         gap: 2rem;
     }
 
-    .title h5{
+    .title h5 {
         position: absolute;
         width: 85vw;
         top: 4.5rem;
         text-align: center;
     }
 
-    .container-tags{
-        height:auto;
+    .container-tags {
+        height: auto;
         width: 20rem;
     }
 
-    .descricao{
+    .descricao {
         order: 3;
         width: 85vw;
     }
+
+
+    .container-criados {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 5rem;
+        width: 100%;
+        height: auto;
+    }
+
+    .projetos-criados {
+        width: 19.5rem;
+        height: 16.125rem;
+    }
+
+    .img-proj-criado {
+        width: 19.5rem;
+        height: 16.125rem;
+    }
 }
 
+@media screen and (max-width:600){
+    .modal-4 {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        background: var(--cor-5);
+        width: 26.313rem;
+        height: 15.125rem;
+        margin-top: 2.5rem;
+        padding: 0.5rem 1.375rem;
+    }
+}
 
 @media screen and (max-width:484px) {
     .modal-1 {
