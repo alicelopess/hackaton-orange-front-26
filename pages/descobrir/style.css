@@ -165,7 +165,7 @@ header {
     gap: 1.5rem;
     padding: 2.5rem 2rem 4.94rem 2rem;
     width: 100%;
-    height: 16.125rem;
+    height: auto;
     flex-shrink: 0;
     flex-wrap: wrap;
     align-content: space-between;
@@ -207,10 +207,11 @@ header {
 
 
 @media screen and (max-width:1070px) {
-
     .container-modal{
         height: 140%;
     }
+
+
 }
 
 .modal-projeto {
@@ -319,6 +320,11 @@ span {
     letter-spacing: 0.00938rem;
 }
 
+
+
+
+
+
 @media screen and (max-width:900px) {
     .menu {
         display: inline;
@@ -336,5 +342,40 @@ span {
 
     .h-1 a {
         display: none;
+        
+    }
+
+    .section-1 p{
+        font-size: 1.6rem;
+        margin: 0rem 2rem 0 2rem;
+        font-weight: 500;
+    }
+
+    .pesquisa {
+        height: auto;
+        width: auto;
+    
+        gap: 1rem;
+        display: flex;
+        justify-content: center;
+        padding-left: 0;
+        margin: 2rem 1.5rem 1rem 1.5rem;
+    }
+    
+    .pesquisa input {
+        width: 100%;
+        font-size: 1rem;
+    }
+    
+    .container-projetos {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 5rem;
+    }
+
+    .bloco-img{
+        width: 22rem;
     }
 }

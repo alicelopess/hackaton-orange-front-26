@@ -331,6 +331,7 @@ function editar() {
     modal4.style.display = "none";
     balaoOption.style.display = "none";
     modal1.style.display = "inline";
+
 }
 
 function excluir() {

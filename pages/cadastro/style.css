@@ -49,17 +49,17 @@
     gap: 1rem;
     border-radius: 4px;
     background-color: var(--cor-7);
+    transition: 0.2s;
 }
 
 .Error-email {
-    display: flex;
+    display: none ;
     align-items: center;
     width: 19.5rem;
     height: 4.75rem;
     padding: 10px 16px;
     gap: 1rem;
     border-radius: 4px;
-    background-color: red;
 }
 
 .status img {
@@ -145,7 +145,7 @@ label {
     left: 280px;
 }
 
-/* Formatação caso o e-mail já esteja vinculado */
+/* Formatação caso o e-mail já esteja vinculado 
 
 .format-erro label {
     color: red;
@@ -155,7 +155,7 @@ label {
     border: 1px solid red;
 }
 
-/* Continuação do código*/
+ Continuação do código*/
 
 
 #lb-3 {
@@ -190,7 +190,7 @@ input {
     border: var(--none, 1px) solid var(--components-input-outlined-enabledBorder, rgba(0, 0, 0, 0.23));
 }
 
-#submit {
+.submit {
     background: var(--cor-4);
     display: flex;
     width: 100%;
