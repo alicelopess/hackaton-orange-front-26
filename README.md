@@ -15,7 +15,7 @@ A aplicação permiti que membros de comunidade cadastrem e compartilhem seus pr
 
 ## Tecnologias Usadas
 
-- HTM
+- HTML
 - CSS
 - JavaScript
 
