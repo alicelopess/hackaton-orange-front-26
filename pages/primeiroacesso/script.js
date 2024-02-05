@@ -1,10 +1,17 @@
-// Selecionando elementos do DOM
-const modal = document.getElementsByClassName("container-modal")[0]; // Container envolvendo os modais
-const modal1 = document.getElementsByClassName("modal-1")[0]; // Primeiro modal do formulário
-const modal2 = document.getElementsByClassName("modal-2")[0]; // modal visualização do projeto
-const modal3 = document.getElementsByClassName("modal-3")[0]; // modal de confirmação de criação projeto
-const modal4 = document.getElementsByClassName("modal-4")[0]; // Modal de exclusão modal
+// Config
+const path = "projects" //pode ser user
+const url = `http://localhost:3333/${path}`
 
+// Modais
+const modalContainer = document.getElementById('container-modal') // Container envolvendo os modais
+const modalCriarProjeto = document.getElementById('modal-adicionar-projeto') // Modal de criar projeto
+const modalVisualizarProjeto = document.getElementById('modal-visualizar-projeto') // Modal de visualizar projeto criado
+const modalExcluirProjeto = document.getElementById('modal-projeto-acao-excluir') // Modal de alerta quando vai excluir projeto
+const modalProjetoAcaoSucesso = document.getElementById('modal-projeto-acao-sucesso') // Modal de alerta quando tem acao sucesso de projeto criado ou excluido
+const mensagemAcaoSucesso = document.getElementById('modal-projeto-acao-sucesso-mensagem')
+
+const buttonExcluirProjeto = document.getElementById("btn-excluir-projeto")
+const buttonSalvarProjeto = document.getElementById('btnSalvar')
 const BtnInput = document.getElementsByClassName("enviar-projeto-2")[0]; // Botão para adicionar imagem no primeiro modal
 const inputIMG = document.getElementById("input-file"); // Input invisível associado ao formulário e botão acima
 
@@ -14,160 +21,119 @@ let inptLink = document.getElementById("link");
 let inptDescricao = document.getElementById("descricao");
 let inptTag = document.getElementById("tags");
 
-// Campos da prévia onde os inputs serão exibidos
-let previewTitle = document.querySelector(".title h5");
-let previewDescri = document.querySelector("#des-1");
-let previewLink = document.querySelector(".descricao a");
-let previewTag = document.querySelector(".tags");
-
-//container dos projetos (precisei mexer neles para fixar o tamanho da tela quando abrir o modal)
-const containerProj = document.getElementsByClassName("container-projetos")[0]; // Container que envolve os projects
-const body = document.getElementsByTagName("body")[0];
+// Campos do modal de projeto
+const imagemProjeto = document.getElementById("imagem-projeto-criado")
+const dataProjeto = document.getElementById("data-projeto-criado")
+const tituloProjeto = document.getElementById("titulo-projeto-criado")
+const descricaoProjeto = document.getElementById("descricao-projeto-criado")
+const tagsProjeto = document.getElementById("tags-projeto-criado")
+const linkProjeto = document.getElementById("link-projeto-criado")
 
 // Imagens a serem exibidas nos modais
 let preview = document.getElementById("exibir-projeto"); // Imagem exibida no primeiro modal
-let preview2 = document.getElementById("exibir-projeto-2"); // Imagem exibida no segundo modal
+// let preview2 = document.getElementById("exibir-projeto-2"); // Imagem exibida no segundo modal
 
 // Inputs/Submissões do formulário e botões associados
 const inpSubmit = document.getElementById("Enviar"); // Input/Submit do formulário (Enviar)
 const btnSalvar = document.getElementById("btnSalvar"); // Botão para enviar o formulário
 
 
-// Adicione o código para exibir e ocultar o balão de opções para todos os elementos .options-criados
-const opcoesCriados = document.querySelectorAll(".options-criados");
-opcoesCriados.forEach(opcao => {
-    opcao.addEventListener("click", () => {
-        const balaoOption = opcao.nextElementSibling;
-        balaoOption.style.display = (balaoOption.style.display === "none" || balaoOption.style.display === "") ? "flex" : "none";
-    });
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    opcao.addEventListener("dblclick", (event) => {
-        event.preventDefault();
-    });
-});
-
-
-
-
-// Abre e fecha o primeiro modal
-function openModal() {
-    modal.style.display = "flex";
-    modal1.style.display = "inline"
-    abriContainer()
+////////////// FUNCOES MODAIS//////////////
+// funcao generica para exibir e ocultar fundo preto e modal escolhido
+function openModal(modal) {
+    modalContainer.style.display = "flex";
+    modal.style.display = "flex"
+}
+function closeModal(modal) {
+    modalContainer.style.display = "none";
+    modal.style.display = "none"
 }
 
-function closeModal() {
-    modal.style.display = "none";
-    preview.style.display = 'none';
+// funcoes de abrir e fechar modal de adicionar novo projeto
+function openModalAdicionarProjeto() {
+    openModal(modalCriarProjeto)
+    buttonSalvarProjeto.setAttribute('mode', 'create')
+}
+function closeModalAdicionarProjeto() {
     BtnInput.style.display = 'inline';
-    preview2.src = "/";
-
-    fecharContainer()
-    LimparForm()
+    closeModal(modalCriarProjeto)
+    limparForm()
 }
 
-// Abre e fecha o segundo modal
-function openModal2() {
-    modal2.style.display = "flex";
-    autocompletar();
-    capturaTags();
-    fixedPreview()
-
+// funcones para abrir e fechar modal de preview
+function openModalVisualizarPreviewProjeto() {
+    openModal(modalVisualizarProjeto)
+    autocompletar()
+}
+function closeModalVisualizarPreviewProjeto() {
+    closeModal(modalVisualizarProjeto)
 }
 
-function closeModal2() {
-    modal2.style.display = "none";
-
-    limparTags();
-    resetPreview();
+//funcoes fechar modal do alerta de projeto criado ou projeto excluido
+function closeModalProjetoAcaoSucesso() {
+    closeModal(modalProjetoAcaoSucesso)
 }
 
-// Abre e fecha o terceiro modal (Botao Salvar)
-function openModal3() {
-    modal.style.display = "flex";
-    modal1.style.display = "none";
-    modal3.style.display = "flex";
+// funcoes abrir e fechar modal da visualizacao de projeto (tanto projeto criado quando previa)
+function openModalVisualizarProjeto(project) {
+    openModal(modalVisualizarProjeto)
+    renderProjectModal(project)
 
-    // Reset nos campos das imagens carregadas
-    preview2.src = "/";
-    preview.style.display = 'none';
-    BtnInput.style.display = 'inline';
-    fecharContainer()
-    LimparForm()
 }
+function closeModalVisualizarProjeto() {
+    const criandoProjeto = modalCriarProjeto.style.display == 'flex'
 
-function closeModal3() {
-    modal3.style.display = "none";
-    modal.style.display = "none";
-    modal1.style.display = "inline";
-}
-
-// Função associada ao botão para abrir o input de arquivo invisível
-BtnInput.addEventListener("click", () => {
-    inputIMG.click();
-});
-
-
-//local onde ficará a imagem convertida
-let imagemBase64;
-
-// Funcionalidade para o usuário enviar a imagem + conversão em base 64 para enviar pro backend
-inputIMG.addEventListener("change", () => {
-    let file = inputIMG.files[0];
-
-    // Antes de converter o arquivo, precisa verificar o tamanho dele
-    if (file) {
-        const limiteTamanho = 10 * 1024 * 1024; //Criei essa var como parâmetro para comparar o tamanho
-        if (file.size > limiteTamanho) {
-            alert('Tamanho não suportado, por favor escolha um arquivo menor.');
-            inputIMG.value = ''; // Caso o arquivo não atenda, exclui a alocação dele e deixa o input vazio
-            return;
-        }
-
-        //Conversão de imagem para string.
-        //É preciso ler o arquivo antes de executar a conversão 
-        let leitura = new FileReader(); // FileReader() é um método nativo do js 
-        leitura.onload = function (event) {
-            imagemBase64 = event.target.result;
-            console.log(imagemBase64)
-
-            preview.src = imagemBase64;
-            preview2.src = imagemBase64;
-            preview.style.display = 'inline';
-            BtnInput.style.display = 'none';
-        };
-        leitura.readAsDataURL(file);
-    } else {
-        alert('Nenhum arquivo selecionado.');
-    }
-});
-
-
-// Preenche os campos do preview com o que está sendo preenchido nos campos do formulário
-// Funcao sendo chamada dentro do openModal2(botao de visualzação)
-function autocompletar() {
-    if (inptTitle.value === "") {
-        previewTitle.textContent = "Título do projeto";
-    } else {
-        previewTitle.textContent = inptTitle.value;
+    if (criandoProjeto) {
+        modalVisualizarProjeto.style.display = 'none'
+        return;
     }
 
-    if (inptDescricao.value === "") {
-        previewDescri.textContent = "(Descrição)";
-    } else {
-        previewDescri.textContent = inptDescricao.value;
-    }
-
-    if (inptLink.value === "") {
-        previewLink.textContent = "Link do projeto";
-    } else {
-        previewLink.textContent = inptLink.value;
-    }
+    closeModal(modalVisualizarProjeto)
 }
 
+// funcoes para exibir e ocultar modal de confirmar exclusao do projeto
+function openModalExcluirProjeto() {
+    openModal(modalExcluirProjeto)
+
+}
+function closeModalExcluirProjeto() {
+    closeModal(modalExcluirProjeto)
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// FUNCOES GENERICAS UTILITARIAS
+
+// funcao para exibir e ocultar acoes de edicao e exclusao
+function toggleProjetoAcoes(id) {
+    let menu = document.getElementById(`menu-acao-${id}`)
+    let menuAberto = menu.style.display == 'flex'
+
+
+    if (menuAberto) menu.style.display = 'none'
+    else menu.style.display = 'flex'
+
+}
+
+// funcao generica para guiar criacao ou edicao do projeto
+function salvarProjeto() {
+    const modoSave = buttonSalvarProjeto.getAttribute('mode');
+
+    switch (modoSave) {
+        case 'create':
+            createProject()
+        case 'edit':
+            const projectId = buttonSalvarProjeto.getAttribute('projectIdToEdit');
+            updateProject(projectId)
+    }
+
+}
 
 //limpar campos do formulário
-function LimparForm() {
+function limparForm() {
+    preview.src = ""
     inptTitle.value = "";
     inptLink.value = "";
     inptDescricao.value = "";
@@ -175,177 +141,399 @@ function LimparForm() {
 
 }
 
-//Capturar as tags no input e exibir no preview
-function capturaTags() {
-    let palavras = inptTag.value.split(/\s+/);
-
-    if (inptTag.value !== "") {
-        palavras.forEach(tag => {
-
-            let paragrafo = document.createElement("p");
-            paragrafo.textContent = tag;
-            previewTag.appendChild(paragrafo)
-        });
-    }
-
+// formatar data em dd/mm/yyyy
+function formatDate(date) {
+    return Intl.DateTimeFormat().format(new Date(date))
 }
 
 
-//Atualizar as tags quando sair do preview
-function limparTags() {
-    previewTag.innerHTML = ""
-}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+////////////////////////INTEGRAÇÃO/////////////////////////////
 
-
-//Exibir data atualizada no preview
-attData()
-function attData() {
-    let date = document.querySelector("#date")
-    console.log(date.textContent)
-
-    let dataAtual = new Date();
-    let ano = dataAtual.getFullYear().toString().slice(-2);
-    let mes = dataAtual.getMonth() + 1;
-    let dataFormatada = mes + '/' + ano;
-
-    date.textContent = dataFormatada;
-}
-
-
-//Precisei limitar manualmente o tamanho do meu container modal (sombra) 
-//para cubrir meu modal
-function abriContainer() {
-    body.style.height = "100vh"
-    containerProj.style.height = "50rem"
-    containerProj.style.overflow = "hidden"
-}
-
-function fecharContainer() {
-    containerProj.style.height = "auto"
-    containerProj.style.overflow = "visible"
-
-}
-
-
-//Open menu mobile
-const menuMob = document.getElementsByClassName("drop")[0];
-const menuMobLinks = document.getElementsByClassName("drop-2")[0];
-let menuVisible = false;
-
-// Função para controlar o menu mobile
-function controlMenuMobile() {
-    if (menuVisible) {
-        closeMenuMob();
-    } else {
-        openMenuMob();
-    }
-}
-
-function openMenuMob() {
-    menuMob.style.display = "flex";
-    menuVisible = true;
-}
-
-function closeMenuMob() {
-    menuMob.style.display = "none";
-    menuVisible = false;
-}
-
-menuMob.addEventListener('click', controlMenuMobile);
-menuMobLinks.addEventListener('click', function () {
-    console.log("Drop-2 clicado");
-})
-
-
-//Sair para tela de login / Mobile
-const btnLogout = document.getElementsByClassName("drop-3")[0];
-function logout() {
-    window.location.href = "../login/index.html"
-}
-
-
-//Fixar tela de visualização do projeto / Mobile
-function fixedPreview() {
-    window.scrollTo(0, 0);
-    if (window.innerWidth < 900) {
-        modal.style.height = "150%"
-        containerProj.style.height = "50rem"
-        containerProj.style.overflow = "hidden"
-    }
-}
-
-function resetPreview() {
-    if (window.innerWidth < 1500) {
-        modal.style.height = "220%"
-        containerProj.style.height = "auto"
-    } else {
-        modal.style.height = "150%"
-        containerProj.style.height = "auto"
-    }
-
-}
-
-//Teste de Integração
-
-// url
-const path = "projects" //pode ser user
-const url = `http://localhost:3333/${path}`
-
-function atribuicaoTeste() {
-    modal4.style.display = "none"
+function createProject() {
     //inputs do form
-    let inptTitle = document.getElementById("titulo").value
-    let inptTag = document.getElementById("tags").value
-    let inptLink = document.getElementById("link").value
-    let inptDescription = document.getElementById("descricao").value
+    let image = preview.src
+    let title = inptTitle.value
+    let tag = inptTag.value
+    let link = inptLink.value
+    let description = inptDescricao.value
 
+    if (!image || !title || !tag || !link || !description) return
 
     const project = {
-        title: inptTitle,
-        tag: inptTag,
-        link: inptLink,
-        description: inptDescription,
-        image: "image"
+        title,
+        tag,
+        link,
+        description,
+        image,
     }
 
-    addProject(project)
+    axios.post(url, project)
+    .then(response => {
+        closeModalAdicionarProjeto()
+
+        openModal(modalProjetoAcaoSucesso)
+        mensagemAcaoSucesso.innerText = response.data.message
+
+        const data = response.data
+        const projects = data.projectsArray
+        renderProjects(projects)
+        
+        //alert(data)
+    })
+    .catch(error => {
+        console.log(error)
+    })
 }
 
-function addProject(project) {
-    axios.post(url, project)
+function getProjects() {
+    const loadingProjetos = document.getElementById('projects-loading-state')
+    loadingProjetos.style.display = 'flex'
+
+    axios.get(url)
         .then(response => {
-            openModal3()
-            console.log(response)
             const data = response.data
-            //alert(data)
+            renderProjects(data)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+        .finally(() => {
+            loadingProjetos.style.display = 'none'
+        })
+}
+
+function updateProject(projectId) {
+    let image = preview.src
+    let title = inptTitle.value
+    let tag = inptTag.value
+    let link = inptLink.value
+    let description = inptDescricao.value
+
+    if (!image || !title || !tag || !link || !description) return
+
+    const project = {
+        title,
+        tag,
+        link,
+        description,
+        image,
+    }
+
+    axios.put(`${url}/${projectId}`, project)
+        .then(response => {
+            closeModalAdicionarProjeto()
+
+            const data = response.data
+            const projects = data.projectsArray
+
+            openModal(modalProjetoAcaoSucesso)
+            mensagemAcaoSucesso.innerText = data.message
+
+            renderProjects(projects)
+
         })
         .catch(error => {
             console.log(error)
         })
 }
 
+function deleteProject(projectId) {
+    axios.delete(`${url}/${projectId}`)
+    .then(response => {
+        const data = response.data
 
-function editar() {
-    openModal()
-    modal4.style.display = "none";
-    balaoOption.style.display = "none";
-    modal1.style.display = "inline";
+        closeModalExcluirProjeto()
+        
+        openModal(modalProjetoAcaoSucesso)
+        mensagemAcaoSucesso.innerText = data.message
+
+        renderProjects(data.projectsArray)
+            
+    })
+    .catch(error => {
+        console.log(error)
+    })
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+///////////////RENDERIZACAO////////////////////
+
+function renderProjects(projects) {
+    if (projects.length > 0) {
+        document.getElementById('projects-empty-state').style = 'display:none'
+        document.getElementById('projects-list').style = 'display:flex'
+    }
+    else {
+        document.getElementById('projects-empty-state').style = 'display:flex'
+        document.getElementById('projects-list').style = 'display:none'
+    }
+
+    //Div com todos
+    const listagemProjetos = document.getElementById('projects-list')
+
+    const projectsDivs = projects.map((project) => {
+        //Individual
+        const div = document.createElement('div')
+            div.classList.add("projeto-criado")
+            div.onclick = function(){
+                openModalVisualizarProjeto(project)
+            }
+
+        // IMAGE CONTAINER
+        const containerImagem = document.createElement('div')
+            containerImagem.classList.add('projeto-imagem-container')
+
+            // ACTION MENU
+            const edicao = document.createElement('div')
+            edicao.classList.add('edicao-option')
+            edicao.onclick = function(e){
+                e.stopPropagation()
+                toggleProjetoAcoes(project._id)
+            }
+
+                const icone = document.createElement('img')
+                icone.setAttribute('src', '../../assets/edit.png')
+
+                const menuAcao = document.createElement('div')
+                menuAcao.setAttribute('id', `menu-acao-${project._id}`)
+                menuAcao.classList.add('balao-options')
+
+                const acaoEdicao = document.createElement('button')
+                    acaoEdicao.onclick = function(){ 
+                        buttonSalvarProjeto.setAttribute('mode', 'edit')
+                        buttonSalvarProjeto.setAttribute('projectIdToEdit', project._id)
+                        preview.style.display = 'block';
+                        preview.style.borderRadius = '4px';
+                        BtnInput.style.display = 'none';
+
+                        preview.src = project.image
+                        inptTitle.value = project.title
+                        inptTag.value = project.tag
+                        inptDescricao.value = project.description
+                        inptLink.value = project.link
+                        openModal(modalCriarProjeto)
+                    }
+                    acaoEdicao.innerText = "Editar"
+                    
+                    const acaoExcluir = document.createElement('button')
+                    acaoExcluir.onclick = function(){ 
+                        openModalExcluirProjeto()
+                        buttonExcluirProjeto.onclick = function() {
+                            deleteProject(project._id)
+                        }
+                     }
+                    acaoExcluir.innerText = "Excluir"
+                
+                menuAcao.appendChild(acaoEdicao)
+                menuAcao.appendChild(acaoExcluir)
+            
+            edicao.appendChild(icone)
+            edicao.appendChild(menuAcao)
+
+            const imagem = document.createElement('img')
+                imagem.setAttribute('src', project.image)
+
+        containerImagem.appendChild(edicao)
+        containerImagem.appendChild(imagem)
+
+        
+        // MAIN INFORMATION
+        const informacaoProjeto = document.createElement('div')
+            informacaoProjeto.classList.add('projeto-infos')
+
+            const info = document.createElement('div')
+                info.classList.add("projeto-infos-geral")
+
+                const avatar = document.createElement('img')
+                    avatar.setAttribute('src', '../../assets/Image.png')
+                    avatar.classList.add("projeto-avatar")
+
+                const title = document.createElement('p') // nome do usuario
+            
+            info.appendChild(avatar)
+            // nome do usuario
+            info.appendChild(title).innerHTML = `${project.title} • ${formatDate(project.createdAt)} `
+
+            const tags = document.createElement('div')
+                tags.classList.add("tags")
+            const tag = document.createElement('p')
+                tag.innerHTML = `${project.tag}`
+
+            tags.appendChild(tag)
+
+        informacaoProjeto.appendChild(info)
+        informacaoProjeto.appendChild(tags)
+        
+
+        div.appendChild(containerImagem)
+        div.appendChild(info)
+
+        
+        return div
+    })
+
+    listagemProjetos.innerHTML = ""
+
+    projectsDivs.forEach(projectDiv => {
+        listagemProjetos.appendChild(projectDiv)
+    });
+}
+
+function renderProjectModal(project) {
+    const tags = project.tag.split(' ').map(tag => `<p>${tag}</p>`)
+
+    dataProjeto.textContent = formatDate(project.createdAt)
+    imagemProjeto.setAttribute('src', project.image)
+    tituloProjeto.textContent = project.title
+    descricaoProjeto.textContent = project.description
+    tagsProjeto.innerHTML = tags
+    linkProjeto.textContent = project.link
 
 }
 
-function excluir() {
-    modal.style.display = "inline";
-    modal1.style.display = "none";
-    modal3.style.display = "none";
-    modal4.style.display = "flex"
 
-}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-function closeModal4() {
-    modal4.style.display = "none";
-    modal.style.display = "none";
-    balaoOption.style.display = "none";
 
-}
+// VALIDAR E REFATORAR CODIGO
+    // Função associada ao botão para abrir o input de arquivo invisível
+    BtnInput.addEventListener("click", () => {
+        inputIMG.click();
+    });
+
+    // Funcionalidade para o usuário enviar a imagem
+    inputIMG.addEventListener("change", () => {
+        let file = inputIMG.files[0];
+
+        if (file) {
+            var leitura = new FileReader();
+            leitura.onload = function (event) {
+                var imageUrl = event.target.result;
+
+                preview.src = imageUrl;
+                preview.style.display = 'inline';
+                BtnInput.style.display = 'none';
+            };
+            leitura.readAsDataURL(file);
+        } else {
+            alert('Nenhum arquivo selecionado.');
+        }
+    });
+
+
+    // Preenche os campos do preview com o que está sendo preenchido nos campos do formulário
+    // Funcao sendo chamada dentro do openmodalVisualizarProjeto(botao de visualzação)
+    function autocompletar() {
+        if (preview.src) {
+            imagemProjeto.src = preview.src
+        }
+
+        dataProjeto.innerText = formatDate(new Date())
+
+        if (inptTitle.value === "") {
+            tituloProjeto.innerHTML = "Título do projeto";
+        } else {
+            tituloProjeto.textContent = inptTitle.value;
+        }
+
+        if (inptDescricao.value === "") {
+            descricaoProjeto.textContent = "(Descrição)";
+        } else {
+            descricaoProjeto.textContent = inptDescricao.value;
+        }
+
+        if (inptTag.value === "") {
+            tagsProjeto.textContent = "(Tags)";
+        } else {
+            capturaTags(inptTag.value);
+        }
+
+        if (inptLink.value === "") {
+            linkProjeto.textContent = "Link do projeto";
+        } else {
+            linkProjeto.textContent = inptLink.value;
+        }
+    }
+
+    //Capturar as tags no input e exibir no preview
+    function capturaTags(tags) {
+        let palavras = tags.split(/\s+/);
+        tagsProjeto.innerHTML = ""
+
+        if (inptTag.value !== "") {
+            palavras.forEach(tag => {
+
+                let paragrafo = document.createElement("p");
+                paragrafo.textContent = tag;
+                tagsProjeto.appendChild(paragrafo)
+            });
+        }
+
+    }
+
+    //Open menu mobile
+    const menuMob = document.getElementsByClassName("drop")[0];
+    const menuMobLinks = document.getElementsByClassName("drop-2")[0];
+    let menuVisible = false;
+
+    // Função para controlar o menu mobile
+    function controlMenuMobile() {
+        if (menuVisible) {
+            closeMenuMob();
+        } else {
+            openMenuMob();
+        }
+    }
+
+    function openMenuMob() {
+        menuMob.style.display = "flex";
+        menuVisible = true;
+    }
+
+    function closeMenuMob() {
+        menuMob.style.display = "none";
+        menuVisible = false;
+    }
+
+    menuMob.addEventListener('click', controlMenuMobile);
+    menuMobLinks.addEventListener('click', function () {
+        console.log("Drop-2 clicado");
+    })
+
+
+    //Sair para tela de login / Mobile
+    const btnLogout = document.getElementsByClassName("drop-3")[0];
+    function logout() {
+        window.location.href = "../login/index.html"
+    }
+
+
+    //Fixar tela de visualização do projeto / Mobile
+    function fixedPreview() {
+        window.scrollTo(0, 0);
+        if (window.innerWidth < 900) {
+            modalContainer.style.height = "100vh"
+            modalContainer.style.height = "10rem"
+        }
+    }
+
+    function resetPreview() {
+
+
+        if (window.innerWidth < 1500) {
+            modalContainer.style.height = "220%"
+            modalContainer.style.height = "auto"
+        } else {
+            modalContainer.style.height = "150%"
+            modalContainer.style.height = "auto"
+        }
+
+    }

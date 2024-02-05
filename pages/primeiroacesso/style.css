@@ -9,7 +9,6 @@
     --cor-7: #113;
     --cor-8: #E6E9F2;
     --cor-9: #FEFEFE;
-    --cor-10: #FFEECC;
 }
 
 
@@ -220,8 +219,21 @@ header {
     margin-bottom: 4.94rem;
 }
 
-.enviar-projeto {
+.empty-state {
     display: none;
+}
+
+.loading-state {
+
+}
+
+.project-list {
+    display: none;
+    
+}
+
+.enviar-projeto {
+    display: flex;
     flex-direction: column;
     width: 24.3125rem;
     height: 16.125rem;
@@ -264,142 +276,155 @@ header {
 .bloco {
     width: 24.3125rem;
     height: 16.125rem;
-    display: none;
+    display: flex;
     flex-shrink: 0;
 
     border-radius: var(--borderRadius, 0.25rem);
     background: rgba(230, 233, 242, 0.20);
-}
-
-
-
-
-
-
-
-/* Formatação dos projetos exbidos do back end*/
-.container-criados {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    width: 100%;
-    height: auto;
-}
-
-.projetos-criados {
-    display: flex;
+    /*Adicionado*/
     flex-direction: column;
-    position: relative;
-    width: 24.3125rem;
-    height: 20.125rem;
-    flex-shrink: 0;
-}
 
-@media screen and (max-width:1300) {
-    .projetos-criados {
-        width: 100%;
-    }
+    display: inline-flex;
+    padding: var(--none, 0rem);
+    align-items: flex-start;
+    gap: var(--1, 0.5rem);
 }
-
-.img-proj-criado {
+/*Adicionado*/
+.projeto {
     display: flex;
-    width: 24.313rem;
-    height: 16.125rem;
-    object-fit: cover;
-    border-radius: 0.55rem;
-}
-
-.projeto-infos {
-    width: 100%;
-    justify-content: space-around;
-    display: flex;
-    align-items: center;
-    margin-top: 1rem;
-}
-
-.description-proj {
-    display: flex;
-    width: 20rem;
-    align-items: center;
-    gap: 0.4rem;
-}
-
-.description-proj-tags {
-    display: flex;
-    justify-content: end;
     align-items: center;
     gap: 0.5rem;
-    width: 10rem;
-    min-height: 2.2rem;
 }
 
-.img-proj-criado-user {
-    width: 2.25rem;
-    height: 2.25rem;
-    border-radius: 2rem;
+.projeto-criado {
+    /* position: relative; */
+    width: 389px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    cursor: pointer;
 }
 
+.projeto-imagem-container {
+    position: relative;
+}
 
-.options-criados {
+.imagem-projeto-criado {
+    margin: auto;
+    width: 100%;
+    height: 400px;
+    background-color: rgb(238, 238, 238);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.imagem-projeto-criado img {
+    width: 100%;
+    height: 100%;
+}
+
+.projeto-imagem-container img {
+    width: 389px;
+    height: 258px;
+    border-radius: 8px;
+}
+
+.edicao-option {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 1.8rem;
+    top: 0;
+    right: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #FFCC99;
+    margin: 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edicao-option img {
+    width: 24px;
+    height: 24px;
 }
 
 .balao-options {
+    width: 208px;
+    height: 104px;
+    border-radius: 8px;
+    background-color: white;
     position: absolute;
-    top: 40px;
-    right: 35px;
-    width: 13rem;
-    height: 6.5rem;
+    right: 0;
+    top: 0;
+    margin-top: 40px;
     display: none;
-    gap: 0.5rem;
     flex-direction: column;
     justify-content: center;
-    border-radius: 0.5rem;
-    background: var(--cor-9);
+    gap: 8px
+    /* display: none; */
+}
+.balao-options::after {
+    position: absolute;
+    right: 15px;
+    transform: rotate(45deg);
+    top:-5px;
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: white;
 }
 
 .balao-options button {
+    height: 32px;
+    background-color: white;
     border: none;
-    height: auto;
-    padding: 0.4rem 1.5rem;
-    font-size: 1rem;
-    border-radius: 0.3rem;
-    background: var(--cor-9);
-    color: var(--cor-2);
-    font-weight: 400;
+    cursor: pointer;
+    text-align: left;
+    padding: 8px 24px;
+    font-size: 16px;
+    color: #515255;
 }
 
 .balao-options button:hover {
-    background: var(--cor-10);
+    background-color: #FFEECC;
 }
 
+
+
+.projeto-infos {
+    display: flex;
+    justify-content: space-between;
+}
+
+.projeto-infos-geral {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.projeto-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
 
 /* Primeiro Modal (Adicionar projeto) */
 
 .container-modal {
     position: absolute;
-    top: 0;
-    left: 0;
-    height: 145%;
-    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100vh;
+    width: 100vw;
     background: var(--components-backdrop-fill, rgba(0, 0, 0, 0.50));
 
     display: none;
     justify-content: center;
-    padding-top: 8.94rem;
+    align-items: center;
 }
 
-/* O media abaixo foi utilizado para corrigir umn bug no container que envolvolve o modal (sombra), pois
-quando mudamos para uma resolução menor (notebook) ele não acompanha até o fim da tela. */
-@media screen and (max-width:1500px) {
-    .container-modal {
-        height: 220%;
-    }
-
-}
 
 .modal-1 {
     position: absolute;
@@ -409,7 +434,8 @@ quando mudamos para uma resolução menor (notebook) ele não acompanha até o f
     flex-shrink: 0;
     background: var(--cor-9);
     border-radius: var(--none, 0rem);
-    display: inline;
+    display: none;
+    flex-direction: column;
 }
 
 .modal-1 h4 {
@@ -429,6 +455,78 @@ quando mudamos para uma resolução menor (notebook) ele não acompanha até o f
     font-weight: 400;
     line-height: 1rem;
     letter-spacing: 0.00938rem;
+}
+
+
+.modal-4 {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    background: var(--cor-5);
+    width: 26.313rem;
+    height: 15.125rem;
+    margin-top: 2.5rem;
+    padding: 0.5rem 1.375rem;
+}
+
+.modal-4 h4 {
+    width: 255px;
+    color: var(--cor-2);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 24px;
+    word-wrap: break-word;
+}
+
+.modal-4-btns {
+    display: flex;
+}
+
+.btnClose4 {
+    width: 7.625rem;
+    padding: 0.5rem 1.375rem;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.625rem;
+    letter-spacing: 0.02875rem;
+    text-transform: uppercase;
+    color: var(--cor-3);
+
+    border-radius: var(--borderRadius, 0.25rem);
+    background: var(--action-disabledBackground, rgba(0, 0, 0, 0.12));
+    border: none;
+}
+
+.btnSalvar4 {
+    width: 7.625rem;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.625rem;
+    letter-spacing: 0.02875rem;
+    text-transform: uppercase;
+    color: var(--cor-5);
+    background: var(--cor-4);
+    padding: 0.5rem 1.375rem;
+    margin-right: 1rem;
+
+    border: none;
+    border-radius: var(--borderRadius, 0.25rem);
+    background: var(--Color-Brand-Secundria-Secondary-100, var(--cor-4));
+
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.20), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
+
+.modal-4-img {
+    background: green;
+    padding: 0.1rem;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    flex-shrink: 0;
 }
 
 /* Imagem exibida pelo usuário*/
@@ -542,21 +640,20 @@ quando mudamos para uma resolução menor (notebook) ele não acompanha até o f
 }
 
 
-/* Segundo modal (Demonstração do projeto) */
-
-.modal-2 {
+.modal-projeto-criado {
     display: none;
     flex-direction: column;
-    position: relative;
-    width: 65.125rem;
-    height: 61.30094rem;
-    flex-shrink: 0;
-    margin-top: 8.38;
+    position: absolute;
+    width: 80%;
+    max-width: 64rem;
     border-radius: var(--none, 0rem);
     background: #FFF;
-    padding: 3.5rem 6.38rem 5.18rem 6.38rem;
+    padding: 3.5rem 6rem;
     z-index: 2;
+    position: relative;
 }
+
+
 
 .close {
     position: absolute;
@@ -566,16 +663,16 @@ quando mudamos para uma resolução menor (notebook) ele não acompanha até o f
 
 .title {
     display: flex;
-    width: 52.375rem;
-    padding: var(--none, 0rem);
-    justify-content: center;
+    width: 100%;
+    justify-content: space-between;
     align-items: center;
-    height: 3.125rem;
-    gap: 10.9375rem;
+    position: relative;
+    margin-bottom: 32px;
+    position: relative;
 }
 
 .title-1 {
-    position: relative;
+    /* position: absolute; */
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -589,7 +686,17 @@ quando mudamos para uma resolução menor (notebook) ele não acompanha até o f
 
 }
 
+.title-projeto {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .tags {
+    /* position: absolute; */
+    top: 0;
+    right: 0;
     display: flex;
     gap: 1rem;
 }
@@ -625,7 +732,7 @@ h5 {
 
 .descricao {
     margin-top: 4.01rem;
-    width: 52.375rem;
+    width: 100%;
 
     display: flex;
     flex-direction: column;
@@ -647,6 +754,7 @@ span {
     line-height: 1rem;
     letter-spacing: 0.00938rem;
 }
+
 
 
 /* último modal (Confirmação do envio) */
@@ -709,91 +817,16 @@ span {
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.20), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 }
 
-.modal-4 {
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: none;
-    flex-direction: column;
-    justify-content: space-around;
-    background: var(--cor-5);
-    width: 26.313rem;
-    height: 15.125rem;
-    margin-top: 2.5rem;
-    padding: 0.5rem 1.375rem;
-}
-
-.modal-4 h4 {
-    width: 255px;
-    color: var(--cor-2);
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 24px;
-    word-wrap: break-word;
-}
-
-.modal-4-btns {
-    display: flex;
-}
-
-.btnSalvar4 {
-    width: 7.625rem;
-    font-size: 0.9375rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 1.625rem;
-    letter-spacing: 0.02875rem;
-    text-transform: uppercase;
-    color: var(--cor-5);
-    background: var(--cor-4);
-    padding: 0.5rem 1.375rem;
-    margin-right: 1rem;
-
-    border: none;
-    border-radius: var(--borderRadius, 0.25rem);
-    background: var(--Color-Brand-Secundria-Secondary-100, var(--cor-4));
-
-    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.20), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
-}
-
-.btnClose4 {
-    width: 7.625rem;
-    padding: 0.5rem 1.375rem;
-    font-size: 0.9375rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 1.625rem;
-    letter-spacing: 0.02875rem;
-    text-transform: uppercase;
-    color: var(--cor-3);
-
-    border-radius: var(--borderRadius, 0.25rem);
-    background: var(--action-disabledBackground, rgba(0, 0, 0, 0.12));
-    border: none;
-}
-
-.modal-4-img {
-    background: green;
-    padding: 0.1rem;
-    border-radius: 50%;
-    width: 2.5rem;
-    height: 2.5rem;
-    flex-shrink: 0;
-}
 
 
-@media screen and (max-width:1100px) {
+@media screen and (max-width:950px) {
     .container-modal {
         position: absolute;
         top: 0;
         left: 0;
-        height: 210%;
-        width: 100%;
 
         display: none;
         justify-content: center;
-        padding-top: 8.94rem;
     }
 
     .menu {
@@ -851,17 +884,15 @@ span {
     }
 
     .container-projetos {
-        padding: 2.5rem 2rem;
-        flex-wrap: wrap;
-        margin-top: 1.65rem;
         display: flex;
         justify-content: center;
         padding: 0;
         gap: 1.5rem;
+        margin: 1.6rem 0 4.94rem 0;
     }
 
-
     .enviar-projeto {
+        display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -883,13 +914,6 @@ span {
         text-align: start;
     }
 
-
-    /*Em desenvolvimento*/
-    .modal-1 {
-        max-width: 90%;
-        margin: 0;
-        height: 53.688rem;
-    }
 
 
     .modal-1 h4 {
@@ -955,15 +979,13 @@ span {
         padding: 1rem 0.75rem 4.5rem 0.75rem;
     }
 
-    /* Modal de visualização*/
-    .modal-2 {
-        align-items: center;
-        width: 100%;
-        height: 110%;
-        border-top-left-radius: 1.5rem;
-        border-top-right-radius: 1.5rem;
-    }
 
+
+    /* Modal de visualização*/
+
+    .container-projetos{
+        overflow: hidden;
+    }
 
     #exibir-projeto-2 {
         display: flex;
@@ -973,58 +995,34 @@ span {
         height: 20rem;
         border-radius: var(--none, 0rem);
         margin-top: 5rem;
-
+        
     }
 
-    .title {
+    .title{
+        position: relative;
         justify-content: space-between;
-        width: 85vw;
-        height: 20rem;
-        margin-top: 1rem;
-        order: 2;
-        gap: 2rem;
-    }
-
-    .title h5 {
-        position: absolute;
-        width: 85vw;
-        top: 4.5rem;
-        text-align: center;
-    }
-
-    .container-tags {
-        height: auto;
-        width: 20rem;
-    }
-
-    .descricao {
-        order: 3;
-        width: 85vw;
-    }
-
-
-    .container-criados {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 5rem;
         width: 100%;
-        height: auto;
+        margin-top: 30px;
+        order: 2;
     }
 
-    .projetos-criados {
-        width: 19.5rem;
-        height: 16.125rem;
+    .title-projeto {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
-    .img-proj-criado {
-        width: 19.5rem;
-        height: 16.125rem;
+    .container-tags{
+        height:auto;
+    }
+
+    .descricao{
+        order: 3;
     }
 }
 
-@media screen and (max-width:600){
+@media screen and (max-width:600px){
     .modal-4 {
         position: absolute;
         top: 20%;
@@ -1041,6 +1039,7 @@ span {
         padding: 0.5rem 1.375rem;
     }
 }
+
 
 @media screen and (max-width:484px) {
     .modal-1 {
