@@ -22,3 +22,9 @@ A aplicação permiti que membros de comunidade cadastrem e compartilhem seus pr
 ## Demonstração
 
 Visite a [página do GitHub Pages](https://alicelopess.github.io/hackaton-orange-front-26/) para visualizar a aplicação online.
+
+## Contribuidores
+
+[![Contribuidor 1](https://contributors-img.web.app/image?repo=alicelopess/hackaton-orange-front-26)](https://github.com/alicelopess)
+
+
