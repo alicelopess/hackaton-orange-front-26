@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="/components/favicon.ico" type="image/x-icon">
+    <!-- AXIOS -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -35,29 +37,30 @@
                 <div class="row">
                     <div>
                         <label id="lb-1">Nome </label>
-                        <input type="text">
+                        <!-- NOVO: adicionei required -->
+                        <input type="text" id="userFirstName" required>
                     </div>
 
                     <div>
                         <label id="lb-2">Sobrenome </label>
-                        <input type="text">
+                        <input type="text" id="userLastName" required>
                     </div>
                 </div>
 
                 <div id="input-email" class="format-erro">
                     <label id="lb-3">Email</label>
-                    <input type="email">
+                    <input type="email" id="userEmail" required>
                 </div>
 
                 <label id="lb-4">Senha</label>
-                <input id="inputSenh" type="password" name="password">
+                <input id="userPassword" type="password" name="password" required>
 
                 <div class="exibicaoSenha" >
                     <img class="exibirSenha" src="../../assets/visibility.png" alt="Botão para exibir senha" onclick="optionSenha()">
                     <img class="ocultarSenha" src="../../assets/Vector.png" alt="Botão para exibir senha" onclick="optionSenha()">
                 </div>
 
-                <p class="submit" style="cursor: pointer;" onclick="redirect()">CADASTRAR</p>
+                <p class="submit" style="cursor: pointer;" onclick="resgister()">CADASTRAR</p>
 
 
                 <!-- <input id="submit" type="submit" value="Cadastrar"> -->

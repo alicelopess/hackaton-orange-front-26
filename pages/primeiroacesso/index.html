@@ -11,7 +11,7 @@
     <title>Orange Portifólio</title>
 </head>
 
-<body>
+<body onload="getUserData()">
     <header>
         <div class="h-1 h">
             <img class="menu" src="../../assets/menu-icon.jpg" alt="imagem logo orange-portifolio"
@@ -49,13 +49,13 @@
     </div>
 
     <!-- Parte usuário Camila -->
-    <div class="section-1">
+    <div class="user-info-container">
         <img src="../../assets/Image.png" alt="">
 
-        <div class="infos">
-            <h3>Camila Soares</h3>
-            <p>Brasil</p>
-            <button class="h" onclick="openModal()">ADICIONAR PROJETO</button>
+        <div class="infos" id="user-infos">
+            <!-- <h3 id="user-full-name">Camila Soares</h3>
+            <p id="user-country">Brasil</p>
+            <button class="h" onclick="openModal()">ADICIONAR PROJETO</button> -->
         </div>
     </div>
 

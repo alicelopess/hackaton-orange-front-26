@@ -2,7 +2,7 @@ const mensagemSuc = document.getElementsByClassName("sucesso")[0] //Noticação 
 
 let visibleSenh = document.getElementsByClassName("exibirSenha")[0]
 let hiddenSenh = document.getElementsByClassName("ocultarSenha")[0]
-let senhaInput = document.getElementById("inputSenh");
+let senhaInput = document.getElementById("userPassword");
 
 
 let verfSnha = true; 
@@ -31,12 +31,48 @@ function redirect() {
         mensagemSuc.style.display = "flex";
         // Redireciona o usuário após mais 2 segundos (totalizando 4 segundos)
         setTimeout(function() {
-            window.location.href = "https://alicelopess.github.io/hackaton-orange-front-26/";
+            window.location.href = "http://127.0.0.1:5500/index.html";
         }, 2000);
     }, 2000);
 }
 
 
+///// TESTE DE INTEGRACAO /////
+const urlPath = "users"
+const url = `http://localhost:3333/${urlPath}` //vai ser mudado quando atualizar o render
+
+// CADASTRO
+function resgister() {
+    //inputs do form de cadastro
+    let userFirstName = document.getElementById("userFirstName").value
+    let userLastName = document.getElementById("userLastName").value
+    let userEmail = document.getElementById("userEmail").value
+    let userPassword = document.getElementById("userPassword").value
+
+
+    const newUser = {
+        firstName: userFirstName,
+        lastName: userLastName,
+        email: userEmail,
+        password: userPassword
+    }
+
+    console.log(newUser)
+    registerIntegration(newUser)
+}
+
+function registerIntegration(newUser) {
+        axios.post(url, newUser)
+        .then(response => {
+            console.log(response)
+            redirect()
+
+        })
+        .catch(error => {
+            console.log(error)
+            console.log(error.response.data)
+        })
+}
 
 
 

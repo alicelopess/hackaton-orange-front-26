@@ -349,3 +349,34 @@ function closeModal4() {
     balaoOption.style.display = "none";
 
 }
+
+////// GET USER DATA FROM LOCAL STORAGE
+function getUserData() {
+    const userData = localStorage.getItem("userData")
+    console.log(userData)
+    const userObjectData = JSON.parse(userData)
+    console.log(userObjectData)
+    renderUserInformation(userObjectData)
+}
+
+////// MANIPULANDO USER DATA 
+function renderUserInformation(userObjectData) {
+    const userInfoContainer = document.getElementById("user-infos")
+
+    var userFullName = document.createElement("h3")
+    userFullName.id = "user-full-name"
+    userFullName.innerHTML = `${userObjectData.firstName} ${userObjectData.lastName}`
+    userInfoContainer.append(userFullName)
+
+    var userCountry = document.createElement("p")
+    userCountry.id = "user-country"
+    userCountry.innerHTML = `${userObjectData.country}`
+    userInfoContainer.append(userCountry)
+
+    var createProjectBtn = document.createElement("button")
+    createProjectBtn.className = "h"
+    createProjectBtn.innerHTML = "ADICIONAR PROJETO"
+    createProjectBtn.onclick = function() {openModal()}
+    userInfoContainer.append(createProjectBtn)
+}
+
