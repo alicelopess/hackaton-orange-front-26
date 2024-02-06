@@ -298,7 +298,8 @@ header {
 
 .projeto-criado {
     /* position: relative; */
-    width: 389px;
+    overflow: hidden;
+    min-width: 390px;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -335,8 +336,8 @@ header {
 }
 
 .projeto-imagem-container img {
-    width: 389px;
-    height: 258px;
+    width: 100%;
+    max-height: 260px;
     border-radius: 8px;
 }
 
@@ -839,6 +840,10 @@ span {
         justify-content: center;
     }
 
+    .projeto-criado {
+        min-width: 310px;
+    }
+
     .menu {
         display: inline;
         width: 3.5rem;
@@ -896,9 +901,7 @@ span {
     .container-projetos {
         display: flex;
         justify-content: center;
-        padding: 0;
         gap: 1.5rem;
-        margin: 1.6rem 0 4.94rem 0;
     }
 
     .enviar-projeto {
