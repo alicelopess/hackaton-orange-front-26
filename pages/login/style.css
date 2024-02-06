@@ -66,7 +66,7 @@
     height: 1.3rem;
 }
 
-form {
+.form {
     position: relative;
     display: flex;
     width: 32.3125rem;
@@ -88,7 +88,7 @@ form {
     line-height: 1.5rem; 
 }
 
-label {
+.form label {
     padding: 0 5px;
     position: absolute;
     background: #fff;
@@ -188,7 +188,7 @@ input {
 
 
 
-form a {
+.form a {
     text-decoration: none;
     color: var(--cor-3);
 }
@@ -225,7 +225,7 @@ form a {
         line-height: 1.5rem;
     }
 
-    form {
+    .form {
         width: 19.5rem;
     }
 

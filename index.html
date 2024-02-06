@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/pages/login/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="/components/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Orange Portifólio</title>
 </head>
 
@@ -20,23 +21,25 @@
             <button> <img class="img-2" src="./assets/icon-google.svg" alt="icone do google"> Entrar com Google
             </button>
 
-            <form method="post" action="./pages/primeiroacesso/index.html">
+            <!-- <form> -->
+            <div class="form">
                 <p class="form-title">Faça login com email</p>
 
                 <label id="lb-1">Email</label>
-                <input type="email" name="email">
+                <input id="userEmail" type="email" name="email">
 
                 <label id="lb-2">Senha</label>
-                <input id="inputSenh" type="password" name="password">
+                <input id="userPassword" type="password" name="password">
 
-                <input id="submit" type="submit" value="Entrar">
+                <button id="submit" onclick="login()">Entrar</button>
                 <a id="btnPass" href="./pages/cadastro/index.html">Cadastre-se</a>
 
                 <div class="exibicaoSenha" >
                     <img class="exibirSenha" src="./assets/visibility.png" alt="Botão para exibir senha" onclick="optionSenha()">
                     <img class="ocultarSenha" src="./assets/Vector.png" alt="Botão para exibir senha" onclick="optionSenha()">
                 </div>
-            </form>
+            </div>
+            <!-- </form> -->
         </div>
     </div>
     <script src="./pages/login/script.js"> </script>

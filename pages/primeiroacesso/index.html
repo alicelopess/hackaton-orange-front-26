@@ -11,7 +11,8 @@
     <title>Orange Portifólio</title>
 </head>
 
-<body>
+
+<body onload="getProjects(), getUserData()">
     <header>
         <div class="h-1 h">
             <img class="menu" src="../../assets/menu-icon.jpg" alt="imagem logo orange-portifolio"
@@ -20,13 +21,13 @@
 
             <nav>
                 <a class="link" href="#">Meus projetos</a>
-                <a class="link" href="http://127.0.0.1:5500/pages/descobrir/"">Descobrir</a>
+                <a class="link" href="http://127.0.0.1:5500/pages/descobrir/">Descobrir</a>
             </nav>
         </div>
 
-        <div class=" h-2">
-                    <img class="icon-user" src="../../assets/Image.png" alt="icone usuario">
-                    <img src="../../assets/notifcacao.svg" alt="icone do sino">
+        <div class="h-2" onclick="logout()">
+            <img class="icon-user" src="../../assets/Image.png" alt="icone usuario">
+            <img src="../../assets/notifcacao.svg" alt="icone do sino">
         </div>
     </header>
 
@@ -49,13 +50,13 @@
     </div>
 
     <!-- Parte usuário Camila -->
-    <div class="section-1">
+    <div class="user-info-container">
         <img src="../../assets/Image.png" alt="">
 
-        <div class="infos">
-            <h3>Camila Soares</h3>
-            <p>Brasil</p>
-            <button class="h" onclick="openModal()">ADICIONAR PROJETO</button>
+        <div class="infos" id="user-infos">
+            <!-- <h3 id="user-full-name">Camila Soares</h3>
+            <p id="user-country">Brasil</p>
+            <button class="h" onclick="openModal()">ADICIONAR PROJETO</button> -->
         </div>
     </div>
 
@@ -66,128 +67,118 @@
     </div>
 
     <!-- Ficheiro de projetos -->
-    <div class="container-projetos">
-        <button class="enviar-projeto h" onclick="openModal()">
-            <img src="../../assets/collections.svg" alt="icone do input para enviar imagens">
-            <p class="p-1">Adicione seu primeiro projeto</p>
-            <p class="p-2">Compartilhe seu talento com milhares de pessoas</p>
-        </button>
-
-        <div class="bloco"></div>
-        <div class="bloco"></div>
-
-        <!--Container onde serão exibidos os projetos criados (Retorno das infos do backend)-->
-        <div class="container-criados">
-            <div class="projetos-criados">
-                <img class="img-proj-criado" src="../../assets/test.png" alt="">
-
-                <div class="projeto-infos">
-                    <div class="description-proj">
-                        <img class="img-proj-criado-user" src="../../assets/Image.png" alt="">
-                        <p id="Name-auth">Camila Soares</p> •
-                        <p id="date-proj">12/23</p>
-                    </div>
-
-                    <div class="description-proj-tags">
-                        <p>UX</p>
-                        <p>web</p>
-                    </div>
-
-                    <img class="options-criados h" src="../../assets/icon_edit.svg" alt="opções sobre o projeto">
-
-                    <div class="balao-options">
-                        <button class="h" onclick="editar()">Editar</button>
-                        <button class="h" onclick="excluir()"> Excluir </button>
-                    </div>
-                </div>
+    <div>
+         <!-- Estados do Projeto - CRIACAO / LOADING / LISTAGEM -->
+        <div>
+            <div id="projects-empty-state" class="container-projetos empty-state" >
+                <button class="enviar-projeto h" onclick="openModalAdicionarProjeto()">
+                    <img src="../../assets/collections.svg" alt="icone do input para enviar imagens">
+                    <p class="p-1">Adicione seu primeiro projeto</p>
+                    <p class="p-2">Compartilhe seu talento com milhares de pessoas</p>
+                </button>
+                <div class="bloco"></div>
+                <div class="bloco"></div>
+            </div>
+    
+            <div id="projects-loading-state" class="container-projetos loading-state">
+                <div class="bloco"></div>
+                <div class="bloco"></div>
+                <div class="bloco"></div>
             </div>
 
+            <div id="projects-list" class="container-projetos project-list">
 
-            <!-- Primeiro Modal (Adicionar projeto)-->
-            <div class="container-modal">
-                <div class="modal-1">
-                    <h4>Adiconar projeto</h4>
-                    <form action="https://hackaton-orange-back-26.onrender.com/projects" method="POST"
-                        id="Form-modal-1">
-                        <input id="titulo" type="text" name="titulo" placeholder="Título">
-                        <input id="tags" type="text" name="tags" placeholder="Tags">
-                        <input id="link" type="text" name="link" placeholder="Link">
-                        <input id="descricao" type="text" name="descricao" placeholder="Descrição ">
-                        <input type="file" id="input-file" style="display: none ;" accept="image/*">
+            </div>
+        </div>
 
-                        <input id="Enviar" onclick="openModal3()" type="submit" style="display: none;">
-                    </form>
-                    <p>Selecione o conteúdo que você deseja fazer upload</p>
+        <!-- Primeiro Modal (Adicionar projeto)-->
+        <div id="container-modal" class="container-modal" >
+            <div id="modal-adicionar-projeto" class="modal-1">
+                <h4>Adicionar projeto</h4>
+                <form action="https://hackaton-orange-back-26.onrender.com/projects" method="POST" id="Form-modal-1">
+                    <input id="titulo" type="text" name="titulo" placeholder="Título">
+                    <input id="tags" type="text" name="tags" placeholder="Tags">
+                    <input id="link" type="text" name="link" placeholder="Link">
+                    <input id="descricao" type="text" name="descricao" placeholder="Descrição ">
+                    <input type="file" id="input-file" style="display: none ;" accept="image/*">
 
-                    <img id="exibir-projeto" src="" alt="">
+                    <input id="Enviar" onclick="openModal3()" type="submit" style="display: none;">
+                </form>
+                <p>Selecione o conteúdo que você deseja fazer upload</p>
+
+                <div id="imagem-projeto" class="imagem-projeto">
+                    <img id="exibir-projeto" src="imagem" alt="">
                     <button type="file" class="enviar-projeto-2 h">
                         <img src="../../assets/collections.svg" alt="icone do input para enviar imagens">
                         <p class="p-2">Compartilhe seu talento com milhares de pessoas</p>
                     </button>
-
-                    <div class="modal-bts">
-                        <p onclick="openModal2()" class="h">Visualizar publicação</p>
-                        <button id="btnSalvar" onclick="atribuicaoTeste(), openModal3()" class="h"> SALVAR</button>
-                        <button id="btnClose" type="reset" form="Forme-modal-1" onclick="closeModal()"
-                            class="h">CANCELAR</button>
-                    </div>
                 </div>
 
-                <!-- Segundo modal (Demonstração do projeto)-->
-                <div class="modal-2">
-                    <img onclick="closeModal2()" class="close h" src="../../assets/close.svg" alt="close-menu">
-                    <div class="title">
-                        <div class="title-1">
-                            <img class="icon-user" src="../../assets/Image.png" alt="icone usuario">
-                            <div class="title-infos">
-                                <p>Camila Soares</p>
-                                <p id="date"></p>
-                            </div>
-                        </div>
-
-                        <h5></h5>
-
-                        <div class="container-tags">
-                            <div class="tags">
-                            </div>
-                        </div>
-                    </div>
-
-                    <img id="exibir-projeto-2" src="" alt="">
-
-                    <div class="descricao">
-                        <p id="des-1"></p>
-
-                        <span>Download</span>
-                        <a href=""></a>
-                    </div>
-                </div>
-
-
-                <!-- Terceiro Modal (Confirmação do envio)-->
-                <div class="modal-3">
-                    <p>Projeto adicionado com sucesso!</p>
-                    <img class="modal-3-img" src="../../assets/confirmacao.svg" alt="imagem de confirmação do envio">
-                    <button class="voltar-proj h" onclick="closeModal3()">VOLTAR PARA PROJETOS</button>
-                </div>
-
-                <!-- Modal de exclu~são (Confirmação do envio)-->
-                <div class="modal-4">
-                    <h4>Deseja Excluir?</h4>
-                    <p>Se você prosseguir irá excluir o projeto do seu portfólio</p>
-
-                    <div class="modal-4-btns">
-                        <button class="btnSalvar4 h" onclick="atribuicaoTeste(), openModal3()" class="h">
-                            Exlcuir</button>
-                        <button class="btnClose4 h" onclick="closeModal4()" class="h">CANCELAR</button>
-                    </div>
+                <div class="modal-bts">
+                    <p onclick="openModalVisualizarPreviewProjeto()" class="h">Visualizar publicação</p>
+                    <button id="btnSalvar" onclick="salvarProjeto()" class="h"> SALVAR</button>
+                    <button id="btnClose" type="reset" form="Forme-modal-1" onclick="closeModalAdicionarProjeto()"
+                        class="h">CANCELAR</button>
                 </div>
             </div>
+
+             <!-- Modal Visualizar projeto criado -->
+             <div id="modal-visualizar-projeto" class="modal-projeto-criado">
+                <img onclick="closeModalVisualizarProjeto()" class="close h" src="../../assets/close.svg" alt="close-menu">
+                
+                <div class="title">
+                    <div class="title-1">
+                        <img class="icon-user" src="../../assets/Image.png" alt="icone usuario">
+                        <div class="title-infos">
+                            <p id="criador-nome"></p>
+                            <p id="data-projeto-criado"></p>
+                        </div>
+                    </div>
+                    
+                    <h5 class="title-projeto" id='titulo-projeto-criado'></h5>
+    
+                    <div class="container-tags">
+                        <div id="tags-projeto-criado" class="tags">
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="imagem-projeto-criado">
+                    <img id="imagem-projeto-criado" alt="">
+                </div>
+    
+                <div class="descricao">
+                    <p id="descricao-projeto-criado"></p>
+    
+                    <span>Download</span>
+                    <a href="" id='link-projeto-criado'></a>
+                </div>
+            </div>
+
+            <!-- Terceiro Modal (Confirmação do envio)-->
+            <div id="modal-projeto-acao-sucesso" class="modal-3">
+                <p id="modal-projeto-acao-sucesso-mensagem"></p>
+                <img class="modal-3-img" src="../../assets/confirmacao.svg" alt="imagem de confirmação">
+                <button class="voltar-proj h" onclick="closeModalProjetoAcaoSucesso()">VOLTAR PARA PROJETOS</button>
+            </div>
+
+            <div id="modal-projeto-acao-excluir" class="modal-4">
+                <h4>Deseja Excluir?</h4>
+                <p>Se você prosseguir irá excluir o projeto do seu portfólio</p>
+
+                <div class="modal-4-btns">
+                    <button id="btn-excluir-projeto" class="btnSalvar4 h" class="h">
+                        Exlcuir</button>
+                    <button class="btnClose4 h" onclick="closeModalExcluirProjeto()" class="h">CANCELAR</button>
+                </div>
+            </div>
+
         </div>
-
-
-
-        <script src="./script.js"></script>
+            
+        
+        
+    </div>
+    <script src="./script.js"></script>
 </body>
 
 </html>
