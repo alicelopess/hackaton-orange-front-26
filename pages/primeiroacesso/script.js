@@ -2,6 +2,10 @@
 const path = "projects" //pode ser user
 const url = `http://localhost:3333/${path}`
 
+
+const userData = JSON.parse(localStorage.getItem("userData"))
+if (!userData) window.location.replace('/')
+
 // Modais
 const modalContainer = document.getElementById('container-modal') // Container envolvendo os modais
 const modalCriarProjeto = document.getElementById('modal-adicionar-projeto') // Modal de criar projeto
@@ -124,9 +128,13 @@ function salvarProjeto() {
     switch (modoSave) {
         case 'create':
             createProject()
+            break
         case 'edit':
             const projectId = buttonSalvarProjeto.getAttribute('projectIdToEdit');
             updateProject(projectId)
+            break
+        default:
+        
     }
 
 }
@@ -169,7 +177,11 @@ function createProject() {
         image,
     }
 
-    axios.post(url, project)
+    axios.post(url, project, {
+        headers: {
+            'authorization': `Bearer ${userData.token}`
+        }
+    })
     .then(response => {
         closeModalAdicionarProjeto()
 
@@ -177,7 +189,7 @@ function createProject() {
         mensagemAcaoSucesso.innerText = response.data.message
 
         const data = response.data
-        const projects = data.projectsArray
+        const projects = data.data
         renderProjects(projects)
         
         //alert(data)
@@ -191,7 +203,11 @@ function getProjects() {
     const loadingProjetos = document.getElementById('projects-loading-state')
     loadingProjetos.style.display = 'flex'
 
-    axios.get(url)
+    axios.get(url, {
+        headers: {
+            'authorization': `Bearer ${userData.token}`
+        }
+    })
         .then(response => {
             const data = response.data
             renderProjects(data)
@@ -221,7 +237,11 @@ function updateProject(projectId) {
         image,
     }
 
-    axios.put(`${url}/${projectId}`, project)
+    axios.put(`${url}/${projectId}`, project, {
+        headers: {
+            'authorization': `Bearer ${userData.token}`
+        }
+    })
         .then(response => {
             closeModalAdicionarProjeto()
 
@@ -240,7 +260,11 @@ function updateProject(projectId) {
 }
 
 function deleteProject(projectId) {
-    axios.delete(`${url}/${projectId}`)
+    axios.delete(`${url}/${projectId}`, {
+        headers: {
+            'authorization': `Bearer ${userData.token}`
+        }
+    })
     .then(response => {
         const data = response.data
 
@@ -537,3 +561,35 @@ function renderProjectModal(project) {
         }
 
     }
+
+
+////// GET USER DATA FROM LOCAL STORAGE
+function getUserData() {
+    const userData = localStorage.getItem("userData")
+    // console.log(userData)
+    const userObjectData = JSON.parse(userData)
+    // console.log(userObjectData)
+    renderUserInformation(userObjectData)
+}
+
+////// MANIPULANDO USER DATA 
+function renderUserInformation(userObjectData) {
+    const userInfoContainer = document.getElementById("user-infos")
+
+    var userFullName = document.createElement("h3")
+    userFullName.id = "user-full-name"
+    userFullName.innerHTML = `${userObjectData.firstName} ${userObjectData.lastName}`
+    userInfoContainer.append(userFullName)
+
+    var userCountry = document.createElement("p")
+    userCountry.id = "user-country"
+    userCountry.innerHTML = `${userObjectData.country}`
+    userInfoContainer.append(userCountry)
+
+    var createProjectBtn = document.createElement("button")
+    createProjectBtn.className = "h"
+    createProjectBtn.innerHTML = "ADICIONAR PROJETO"
+    createProjectBtn.onclick = function() {openModalAdicionarProjeto()}
+    userInfoContainer.append(createProjectBtn)
+}
+

@@ -11,8 +11,8 @@
     <title>Orange Portifólio</title>
 </head>
 
-<!-- onload="getProjects()" -->
-<body onload="getProjects()">
+
+<body onload="getProjects(), getUserData()">
     <header>
         <div class="h-1 h">
             <img class="menu" src="../../assets/menu-icon.jpg" alt="imagem logo orange-portifolio"
@@ -25,7 +25,7 @@
             </nav>
         </div>
 
-        <div class="h-2">
+        <div class="h-2" onclick="logout()">
             <img class="icon-user" src="../../assets/Image.png" alt="icone usuario">
             <img src="../../assets/notifcacao.svg" alt="icone do sino">
         </div>
@@ -50,13 +50,13 @@
     </div>
 
     <!-- Parte usuário Camila -->
-    <div class="section-1">
+    <div class="user-info-container">
         <img src="../../assets/Image.png" alt="">
 
-        <div class="infos">
-            <h3>Camila Soares</h3>
-            <p>Brasil</p>
-            <button class="h" onclick="openModalAdicionarProjeto()">ADICIONAR PROJETO</button>
+        <div class="infos" id="user-infos">
+            <!-- <h3 id="user-full-name">Camila Soares</h3>
+            <p id="user-country">Brasil</p>
+            <button class="h" onclick="openModal()">ADICIONAR PROJETO</button> -->
         </div>
     </div>
 
