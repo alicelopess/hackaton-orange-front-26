@@ -429,7 +429,6 @@ header {
 .modal-1 {
     position: absolute;
     width: 55.625rem;
-    height: 32.625rem;
     padding: 1.5rem 2rem;
     flex-shrink: 0;
     background: var(--cor-9);
@@ -822,9 +821,9 @@ span {
 @media screen and (max-width:950px) {
     .container-modal {
         position: absolute;
-        top: 0;
-        left: 0;
-
+        /* top: 0;
+        left: 0; */
+        height: 100vh;
         display: none;
         justify-content: center;
     }
@@ -915,6 +914,10 @@ span {
     }
 
 
+
+    .modal-1 {
+        width: 80%;
+    }
 
     .modal-1 h4 {
         width: 100%;
@@ -1044,7 +1047,6 @@ span {
 @media screen and (max-width:484px) {
     .modal-1 {
         margin: 0;
-        height: 54.688rem;
     }
 
     .enviar-projeto-2 {

@@ -94,7 +94,7 @@
         <!-- Primeiro Modal (Adicionar projeto)-->
         <div id="container-modal" class="container-modal" >
             <div id="modal-adicionar-projeto" class="modal-1">
-                <h4>Adiconar projeto</h4>
+                <h4>Adicionar projeto</h4>
                 <form action="https://hackaton-orange-back-26.onrender.com/projects" method="POST" id="Form-modal-1">
                     <input id="titulo" type="text" name="titulo" placeholder="Título">
                     <input id="tags" type="text" name="tags" placeholder="Tags">
@@ -106,11 +106,13 @@
                 </form>
                 <p>Selecione o conteúdo que você deseja fazer upload</p>
 
-                <img id="exibir-projeto" src="" alt="">
-                <button type="file" class="enviar-projeto-2 h">
-                    <img src="../../assets/collections.svg" alt="icone do input para enviar imagens">
-                    <p class="p-2">Compartilhe seu talento com milhares de pessoas</p>
-                </button>
+                <div id="imagem-projeto" class="imagem-projeto">
+                    <img id="exibir-projeto" src="" alt="">
+                    <button type="file" class="enviar-projeto-2 h">
+                        <img src="../../assets/collections.svg" alt="icone do input para enviar imagens">
+                        <p class="p-2">Compartilhe seu talento com milhares de pessoas</p>
+                    </button>
+                </div>
 
                 <div class="modal-bts">
                     <p onclick="openModalVisualizarPreviewProjeto()" class="h">Visualizar publicação</p>

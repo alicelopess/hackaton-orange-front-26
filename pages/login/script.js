@@ -6,7 +6,6 @@ let senhaInput = document.getElementById("userPassword");
 let verfSnha = true; 
 function optionSenha() {
 
-
     if (verfSnha) {
         visibleSenh.style.display = "none";
         hiddenSenh.style.display = "inline";

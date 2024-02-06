@@ -49,7 +49,6 @@ function resgister() {
     let userEmail = document.getElementById("userEmail").value
     let userPassword = document.getElementById("userPassword").value
 
-
     const newUser = {
         firstName: userFirstName,
         lastName: userLastName,
@@ -57,14 +56,12 @@ function resgister() {
         password: userPassword
     }
 
-    console.log(newUser)
     registerIntegration(newUser)
 }
 
 function registerIntegration(newUser) {
         axios.post(url, newUser)
         .then(response => {
-            console.log(response)
             redirect()
 
         })

@@ -429,7 +429,7 @@ function renderProjectModal(project) {
 
 // VALIDAR E REFATORAR CODIGO
     // Função associada ao botão para abrir o input de arquivo invisível
-    BtnInput.addEventListener("click", () => {
+    document.getElementById("imagem-projeto").addEventListener("click", () => {
         inputIMG.click();
     });
 
