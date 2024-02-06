@@ -61,7 +61,10 @@ function openModalAdicionarProjeto() {
     buttonSalvarProjeto.setAttribute('mode', 'create')
 }
 function closeModalAdicionarProjeto() {
-    BtnInput.style.display = 'inline';
+    BtnInput.style.display = 'flex';
+    preview.style.display = 'none';
+
+
     closeModal(modalCriarProjeto)
     limparForm()
 }
@@ -443,7 +446,7 @@ function renderProjectModal(project) {
                 var imageUrl = event.target.result;
 
                 preview.src = imageUrl;
-                preview.style.display = 'inline';
+                preview.style.display = 'flex';
                 BtnInput.style.display = 'none';
             };
             leitura.readAsDataURL(file);

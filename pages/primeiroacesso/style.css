@@ -305,6 +305,17 @@ header {
     cursor: pointer;
 }
 
+.imagem-projeto {
+    position: relative;
+    overflow: hidden;
+    min-width: 48%;
+}
+
+.imagem-projeto .imagem {
+    border-radius: 4px;
+    width: 100%;
+}
+
 .projeto-imagem-container {
     position: relative;
 }
