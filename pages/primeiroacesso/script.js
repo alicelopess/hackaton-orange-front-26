@@ -28,6 +28,7 @@ let inptTag = document.getElementById("tags");
 // Campos do modal de projeto
 const imagemProjeto = document.getElementById("imagem-projeto-criado")
 const dataProjeto = document.getElementById("data-projeto-criado")
+const nomeCriadorProjeto = document.getElementById("criador-nome")
 const tituloProjeto = document.getElementById("titulo-projeto-criado")
 const descricaoProjeto = document.getElementById("descricao-projeto-criado")
 const tagsProjeto = document.getElementById("tags-projeto-criado")
@@ -384,7 +385,7 @@ function renderProjects(projects) {
             
             info.appendChild(avatar)
             // nome do usuario
-            info.appendChild(title).innerHTML = `${project.title} • ${formatDate(project.createdAt)} `
+            info.appendChild(title).innerHTML = `${userData.firstName} ${userData.lastName} • ${formatDate(project.createdAt)} `
 
             const tags = document.createElement('div')
                 tags.classList.add("tags")
@@ -412,11 +413,11 @@ function renderProjects(projects) {
 }
 
 function renderProjectModal(project) {
-    const tags = project.tag.split(' ').map(tag => `<p>${tag}</p>`)
+    const tags = project.tag.split(' ').map(tag => `<p>${tag}</p>`) 
 
     dataProjeto.textContent = formatDate(project.createdAt)
     imagemProjeto.setAttribute('src', project.image)
-    tituloProjeto.textContent = project.title
+    tituloProjeto.textContent = `${userData.firstName} ${userData.lastName}`
     descricaoProjeto.textContent = project.description
     tagsProjeto.innerHTML = tags
     linkProjeto.textContent = project.link
@@ -464,6 +465,7 @@ function renderProjectModal(project) {
         }
 
         dataProjeto.innerText = formatDate(new Date())
+        nomeCriadorProjeto.innerText = `${userData.firstName} ${userData.lastName}`
 
         if (inptTitle.value === "") {
             tituloProjeto.innerHTML = "Título do projeto";
