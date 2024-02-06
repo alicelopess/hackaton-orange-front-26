@@ -309,7 +309,7 @@ header {
 .imagem-projeto {
     position: relative;
     overflow: hidden;
-    min-width: 48%;
+    max-width: 48%;
 }
 
 .imagem-projeto .imagem {
@@ -927,7 +927,10 @@ span {
         text-align: start;
     }
 
-
+    .imagem-projeto {
+        width: 100%;
+        max-width: 100%;
+    }
 
     .modal-1 {
         width: 80%;
